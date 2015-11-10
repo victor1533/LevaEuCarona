@@ -1,5 +1,6 @@
 package com.orochi.utfpr.levaeu.ConexaoUTFPR.UTFPR;
 
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 
 import javax.security.auth.login.LoginException;
@@ -63,16 +64,24 @@ public final class SistemaUTFPR {
 		Header autenticacao = BasicScheme.authenticate(
 				 new UsernamePasswordCredentials("" + RA, senha),
 				 "ISO-8859-1", false);
-		
+		String htmlHome = "";
 		this.conectaRedeUTFPR(contexto); //TENTA CONECTAR NA REDE DA UTFPR
-		
-		String htmlHome = helper.pegarHTML(URL_BASE + URL_INICIO, autenticacao);		
+		try {
+			 htmlHome = helper.pegarHTML(URL_BASE + URL_INICIO, autenticacao);
+		}catch (Exception e){
+			throw new IllegalStateException("Login ou senha incorretos!");
+		}
 		if(htmlHome.contains("Authorization Required")) return false;
 		else{
 			flagConectado = true;
 			this.header = autenticacao;
 			htmlPortal.setHtmlHome(htmlHome);
-			String htmlAtt = helper.pegarHTML(URL_BASE + URL_ALTERACAOALUNO, autenticacao);		
+			String htmlAtt = null;
+			try {
+				htmlAtt = helper.pegarHTML(URL_BASE + URL_ALTERACAOALUNO, autenticacao);
+			} catch (SocketTimeoutException e) {
+				e.printStackTrace();
+			}
 			htmlPortal.setHtmlAttCadastral(htmlAtt);
 		}
 		return true;
@@ -96,9 +105,15 @@ public final class SistemaUTFPR {
 						"mpboletim.inicioAluno?p_pesscodnr=" + RA + "&p_curscodnr="+  aluno.getCurso().getCodCurso()  + "" +
 								"&p_alcuordemnr=" + aluno.getAlcuordemnr();
 		WebHelper helper = new WebHelper(contexto);
-		
-		String htmlDISCP = helper.pegarHTML(URL_BASE + URL_DISCPMATRICULADAS, header);		
-		String htmlBoletim = helper.pegarHTML(URL_BASE + URL_BOLETIM, header);		
+
+		String htmlDISCP = "";
+		String htmlBoletim ="";
+		try {
+			htmlDISCP = helper.pegarHTML(URL_BASE + URL_DISCPMATRICULADAS, header);
+			htmlBoletim = helper.pegarHTML(URL_BASE + URL_BOLETIM, header);
+		} catch (SocketTimeoutException e) {
+			e.printStackTrace();
+		}
 
 		htmlPortal.setHtmlDiscpMatriculadas(htmlDISCP);
 		htmlPortal.setHtmlDadosBoletim(htmlBoletim);

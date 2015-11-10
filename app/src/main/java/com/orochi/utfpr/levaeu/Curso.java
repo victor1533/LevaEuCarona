@@ -1,10 +1,11 @@
 package com.orochi.utfpr.levaeu;
+import java.io.Serializable;
 import java.lang.String;import java.util.*;
 
 /**
  * 
  */
-public class Curso {
+public class Curso implements Serializable {
     private String nome;
     private int codCurso;
     /**

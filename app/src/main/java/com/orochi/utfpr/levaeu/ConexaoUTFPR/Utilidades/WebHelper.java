@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
  
@@ -38,7 +40,7 @@ public class WebHelper {
     static JSONObject jObj = null;
     static String json = "";
     private Context contexto;
-    private static int TIMEOUT = 10 * 1000;
+    private static int TIMEOUT = 5 * 1000;
     // constructor
     public WebHelper(Context contexto) {
  this.contexto = contexto;
@@ -64,7 +66,7 @@ public String pegarHTML(String url) throws IllegalStateException{
         return null;
 }
 
-public String pegarHTML(String url, Header header) throws IllegalStateException{	
+public String pegarHTML(String url, Header header) throws IllegalStateException, SocketTimeoutException {
         try {
             DefaultHttpClient httpClient = new DefaultHttpClient();
             HttpParams params = httpClient.getParams();

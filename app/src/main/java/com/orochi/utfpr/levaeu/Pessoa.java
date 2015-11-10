@@ -3,13 +3,14 @@ import com.orochi.utfpr.levaeu.Autenticacao.Autenticacao;
 import com.orochi.utfpr.levaeu.Autenticacao.AutenticacaoComRA;
 import com.orochi.utfpr.levaeu.Reputacao.Reputacao;
 
+import java.io.Serializable;
 import java.lang.String;import java.util.*;import java.util.List;
 
 /**
  * 
  */
-public class Pessoa {
-
+public class Pessoa implements Serializable {
+    private int codPessoa;
     private DadosPessoais dados;
     private AutenticacaoComRA autenticacao;
     private Reputacao reputacao;
@@ -19,6 +20,15 @@ public class Pessoa {
     private String alcuordemnr;
     public Pessoa() {
     }
+
+    public int getCodPessoa() {
+        return codPessoa;
+    }
+
+    public void setCodPessoa(int codPessoa) {
+        this.codPessoa = codPessoa;
+    }
+
     public Pessoa(int RA, String senha, Campus campus) {
         this.dados = new DadosPessoais();
         this.autenticacao = new AutenticacaoComRA("" + RA, senha);

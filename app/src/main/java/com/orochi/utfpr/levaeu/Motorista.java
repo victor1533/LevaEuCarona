@@ -1,10 +1,11 @@
 package com.orochi.utfpr.levaeu;
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class Motorista extends Pessoa {
+public class Motorista extends Pessoa implements Serializable {
 
     /**
      * Default constructor

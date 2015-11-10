@@ -1,10 +1,11 @@
 package com.orochi.utfpr.levaeu;
+import java.io.Serializable;
 import java.util.*;import java.util.List;
 
 /**
  * 
  */
-public class Sapo extends Pessoa {
+public class Sapo extends Pessoa implements Serializable {
 
     /**
      * Default constructor

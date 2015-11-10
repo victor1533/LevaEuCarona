@@ -1,10 +1,11 @@
 package com.orochi.utfpr.levaeu;
+import java.io.Serializable;
 import java.util.*;import java.util.List;
 
 /**
  * 
  */
-public class Historico {
+public class Historico implements Serializable {
 
     /**
      * Default constructor

@@ -1,10 +1,11 @@
 package com.orochi.utfpr.levaeu;
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class CoordenadaGPS {
+public class CoordenadaGPS implements Serializable {
 
     /**
      * Default constructor

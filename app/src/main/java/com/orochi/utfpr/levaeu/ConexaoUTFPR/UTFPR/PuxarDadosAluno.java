@@ -7,11 +7,24 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
 
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.orochi.utfpr.levaeu.Callback;
 import com.orochi.utfpr.levaeu.Campus;
+import com.orochi.utfpr.levaeu.Listener.PessoaListener;
+import com.orochi.utfpr.levaeu.Listener.RespostaWS;
+import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
 import com.orochi.utfpr.levaeu.Pessoa;
+
+import java.io.IOException;
+
+import retrofit.GsonConverterFactory;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 public class PuxarDadosAluno extends AsyncTask<String, String, Pessoa> {
 
@@ -53,11 +66,34 @@ public class PuxarDadosAluno extends AsyncTask<String, String, Pessoa> {
 				return null;
 			}
 		}catch(IllegalStateException e){
-			builder1.setMessage(e.getMessage());
+			builder1.setMessage("Login ou senha incorretos");
 			e.printStackTrace();
 			return null;
 		}catch(Exception e){
-			builder1.setMessage("Erro desconhecido.");
+			builder1.setMessage("Login ou senha incorretos");
+			e.printStackTrace();
+			return null;
+		}
+
+		Gson gson = new GsonBuilder()
+				.setDateFormat("yyyy-MM-dd")
+				.create();
+
+		Log.i("GSON", new Gson().toJson((Pessoa) aluno));
+		PessoaListener p = RetrofitUtils.getRetrofit().create(PessoaListener.class);
+		Response<RespostaWS> r = null;
+		try {
+			r = p.cadastrar((Pessoa) aluno).execute();
+			if(r.body() != null && r.body().isSucesso()){
+//				Toast.makeText(contexto, r.body().getResultado(), Toast.LENGTH_LONG).show();
+				aluno.setCodPessoa(r.body().getCod());
+			}
+		} catch (IOException e) {
+			try {
+				Log.i("ERRO", r.errorBody().string());
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
 			return null;
 		}

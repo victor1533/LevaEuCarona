@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/novaCaronaItem" android:icon="@android:drawable/ic_input_add"
+            android:title="Nova carona" />
+        <item android:id="@+id/enviarMensagemItem" android:icon="@android:drawable/sym_action_email"
+            android:title="Enviar mensagem" />
+    </group>
+
+    <item android:title="Configurações">
+        <menu>
+            <item android:id="@+id/mudarTipoItem" android:icon="@android:drawable/ic_menu_edit"
+                android:title="Mudar tipo" />
+            <item android:id="@+id/sairItem" android:icon="@android:drawable/ic_delete"
+                android:title="Sair" />
+        </menu>
+    </item>
+
+</menu>

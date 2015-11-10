@@ -1,9 +1,11 @@
 package com.orochi.utfpr.levaeu.Autenticacao;
 
+import java.io.Serializable;
+
 /**
  * 
  */
-public class AutenticacaoComRA  implements Autenticacao{
+public class AutenticacaoComRA  implements Autenticacao, Serializable{
 
     public String RA;
     public String senha;

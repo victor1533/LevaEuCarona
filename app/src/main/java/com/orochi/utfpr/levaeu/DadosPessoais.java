@@ -1,10 +1,11 @@
 package com.orochi.utfpr.levaeu;
+import java.io.Serializable;
 import java.lang.String;import java.util.*;import java.util.Date;import java.util.List;
 
 /**
  * 
  */
-public class DadosPessoais {
+public class DadosPessoais implements Serializable {
 
     /**
      * Default constructor
