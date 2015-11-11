@@ -31,6 +31,19 @@ public class Datas {
         }
     }
 
+    public static String DateToddMM(Date data){
+        try{
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM");
+            return sdf.format(data);
+
+        }catch(Exception ex){
+            System.out.println("Erro: " + ex);
+            return null;
+        }
+
+
+
+    }
 
     public static Date Agora(){
         Date date = new Date();
