@@ -65,6 +65,11 @@
             android:name=".Activitys.MapaActivity"
             android:label="@string/title_activity_mapa" >
         </activity>
+        <activity
+            android:name=".Activitys.AprovarSaposActivity"
+            android:label="@string/title_activity_aprovar_sapos"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

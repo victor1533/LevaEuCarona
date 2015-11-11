@@ -16,8 +16,8 @@ public class Carona implements Serializable {
     }
     private int codCarona;
     private Pessoa motorista;
-    private List<Sapo> saposNaCarona;
-    private List<Sapo> saposNaEspera;
+    private List<Pessoa> saposNaCarona;
+    private List<Pessoa> saposNaEspera;
     private int numVagas;
     private Local origem;
     private Local destino;
@@ -48,19 +48,19 @@ public class Carona implements Serializable {
         this.motorista = motorista;
     }
 
-    public List<Sapo> getSaposNaCarona() {
+    public List<Pessoa> getSaposNaCarona() {
         return saposNaCarona;
     }
 
-    public void setSaposNaCarona(List<Sapo> saposNaCarona) {
+    public void setSaposNaCarona(List<Pessoa> saposNaCarona) {
         this.saposNaCarona = saposNaCarona;
     }
 
-    public List<Sapo> getSaposNaEspera() {
+    public List<Pessoa> getSaposNaEspera() {
         return saposNaEspera;
     }
 
-    public void setSaposNaEspera(List<Sapo> saposNaEspera) {
+    public void setSaposNaEspera(List<Pessoa> saposNaEspera) {
         this.saposNaEspera = saposNaEspera;
     }
 
@@ -103,6 +103,10 @@ public class Carona implements Serializable {
      * @param sapo 
      * @return
      */
+
+    public boolean isCheia(){
+        return this.saposNaCarona.size() == this.numVagas;
+    }
     public boolean adicionarSapo(Sapo sapo) {
         // TODO implement here
         return false;

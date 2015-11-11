@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,36 +13,43 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.orochi.utfpr.levaeu.Activitys.AdaptersListView.AdapterCaronaListView;
 import com.orochi.utfpr.levaeu.Carona;
+import com.orochi.utfpr.levaeu.Listener.PessoaListener;
+import com.orochi.utfpr.levaeu.Listener.RespostaWS;
 import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
 import com.orochi.utfpr.levaeu.Pessoa;
 import com.orochi.utfpr.levaeu.R;
+import com.orochi.utfpr.levaeu.Sessao;
 
-import java.util.ArrayList;
+import java.io.IOException;
+import java.util.List;
 
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
+import retrofit.Retrofit;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
         private TextView nomeMenu;
         private TextView emailMenu;
    private DrawerLayout drawer;
-    private ListView lista;
     private Pessoa pessoa;
-    private CaronaListView adapter;
+    private ListView lista;
+    private AdapterCaronaListView adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
          pessoa = (Pessoa) getIntent().getSerializableExtra("pessoa");
+        Sessao.getInstance().setPessoaLogada(pessoa);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -65,33 +71,59 @@ public class MainActivity extends AppCompatActivity
         emailMenu = (TextView) headerLayout.findViewById(R.id.emailHeader);
         nomeMenu.setText(pessoa.getDados().getNome());
         emailMenu.setText(pessoa.getDados().getEmail());
-    }
+        this.lista = (ListView) findViewById(R.id.listaCaronas);
 
-    private void preencheLista(final ArrayList<Carona> car){
-        this.lista = (ListView) findViewById(R.id.listView);
-        this.adapter = new CaronaListView(MainActivity.this, car);
+        final PessoaListener p = RetrofitUtils.getRetrofit().create(PessoaListener.class);
+        final Call<List<Carona>> r = p.getAllCaronas();
+        r.enqueue(new Callback<List<Carona>>() {
+            @Override
+            public void onResponse(Response<List<Carona>> response, Retrofit retrofit) {
+                if (response.body() != null) {
+                    adapter = new AdapterCaronaListView(MainActivity.this, response.body());
+                    lista.setAdapter(adapter);
+                    Toast.makeText(MainActivity.this, "" + response.body().size(), Toast.LENGTH_SHORT).show();
 
-        this.lista.setAdapter(this.adapter);
-        this.lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                } else {
+                    try {
+                        Toast.makeText(MainActivity.this, "Erro ao carregar caronas: " + response.errorBody().string(), Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
 
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-                                    long arg3) {
-                Intent intent = new Intent(MainActivity.this, RecebeAdvActivty.class);
-                intent.putExtra("carona", car.get(arg2));
-                /*PessoaListener  e = new RetrofitPessoa().getListener();
-                Log.i("TESTE","Rola");
-                e.lerAdvertencia(adver.get(arg2).getCodAdvertencia());*/
-                startActivity(intent);
+            public void onFailure(Throwable t) {
+            t.printStackTrace();
             }
 
         });
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabio);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 PessoaListener p = RetrofitUtils.getRetrofit().create(PessoaListener.class);
+                 Call<List<Carona>> r = p.getAllCaronas();
+                r.enqueue(new Callback<List<Carona>>() {
+                    @Override
+                    public void onResponse(Response<List<Carona>> response, Retrofit retrofit) {
+                        if (response.body() != null) {
+                            adapter = new AdapterCaronaListView(MainActivity.this, response.body());
+                            lista.setAdapter(adapter);
+                        } else {
+                            Toast.makeText(MainActivity.this, "Erro ao carregar caronas", Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        inicializaDialog();
-        preencheAdvertencias();
+                    @Override
+                    public void onFailure(Throwable t) {
+
+                    }
+
+                });
+            }
+        });
+
     }
 
     @Override
@@ -126,19 +158,6 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-
-    private void preencheAdvertencias() {
-        PessoaListener p = new  RetrofitPessoa().getListener();
-        final Call<ArrayList<Carona>> p2 = p.getAdvertencias(SessaoSingleton.me.getCodPessoa());
-        p2.enqueue(new Callback<ArrayList<Advertencia>>() {
-            @Override
-            public void onResponse(Response<ArrayList<Caronas>> response) {
-                Log.i("TTT", response.raw().body().toString());
-                if (RetrofitUtils.checkRetrofitError(response, MainActivity.this)) {
-                    MainActivity.this.fechaDialog();
-                    return;
-                }
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -149,7 +168,11 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, NewCaronaActivity.class);
             intent.putExtra("pessoa", pessoa);
             startActivity(intent);
-        } else if(id == R.id.sairItem) {
+        } else if (id == R.id.verCaronasAprovar){
+            Intent intent = new Intent(MainActivity.this, AprovarSaposActivity.class);
+            startActivity(intent);
+        }
+        else if(id == R.id.sairItem) {
         finish();
         }else {
             Toast.makeText(getApplicationContext(), "Função não implementada", Toast.LENGTH_LONG).show();
