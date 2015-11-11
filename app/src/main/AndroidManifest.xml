@@ -70,6 +70,16 @@
             android:label="@string/title_activity_aprovar_sapos"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".VerCaronaActiivty"
+            android:label="@string/title_activity_ver_carona_actiivty"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".Activitys.VerCaronasQueEstouActivity"
+            android:label="@string/title_activity_ver_caronas_que_estou"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

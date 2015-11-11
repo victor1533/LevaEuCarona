@@ -22,4 +22,6 @@
     <string name="title_activity_new_carona">NewCaronaActivity</string>
     <string name="title_activity_mapa">Map</string>
     <string name="title_activity_aprovar_sapos">AprovarSaposActivity</string>
+    <string name="title_activity_ver_carona_actiivty">VerCaronaActiivty</string>
+    <string name="title_activity_ver_caronas_que_estou">VerCaronasQueEstouActivity</string>
 </resources>

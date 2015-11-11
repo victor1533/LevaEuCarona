@@ -20,7 +20,10 @@ public class Pessoa implements Serializable {
     private String alcuordemnr;
     public Pessoa() {
     }
-
+    @Override
+    public String toString(){
+        return this.getDados().getNome();
+    }
     public int getCodPessoa() {
         return codPessoa;
     }

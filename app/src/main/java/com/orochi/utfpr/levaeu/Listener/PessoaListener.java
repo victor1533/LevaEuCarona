@@ -40,4 +40,8 @@ public interface PessoaListener {
     @GET("view/pessoa/getCaronasCriadas.php")
     Call<List<Carona>> getCaronasCriadas(@Query("codPessoa") int codPessoa);
 
+    @GET("view/pessoa/verCaronasQueEstou.php")
+    Call<List<Carona>> getCaronasQueEstou(@Query("codPessoa") int codPessoa);
+
+
 }

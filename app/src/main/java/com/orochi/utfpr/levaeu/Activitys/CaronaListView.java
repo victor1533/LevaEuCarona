@@ -61,7 +61,7 @@ public class CaronaListView extends BaseAdapter implements Serializable
         }
         Carona carona = itens.get(position);
         itemHolder.orgDest.setText(carona.getOrigem().getEndereco() + " para " + carona.getDestino().getEndereco());
-        itemHolder.horario.setText("Saída às "+ Datas.DateToHHmm(carona.getDataHoraPartida())+" do dia "+Datas.DateToddMM(carona.getDataHoraPartida()));
+        itemHolder.horario.setText("Saida as "+ Datas.DateToHHmm(carona.getDataHoraPartida())+" do dia "+Datas.DateToddMM(carona.getDataHoraPartida()));
 
         return view;
     }

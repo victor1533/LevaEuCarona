@@ -13,7 +13,7 @@ import retrofit.Retrofit;
 public class RetrofitUtils {
     public static GsonConverterFactory GsonConverterFactoryGen(){
         return GsonConverterFactory.create(
-                new GsonBuilder().setDateFormat("yyyy-MM-dd")
+                new GsonBuilder()
                         .registerTypeAdapter(Date.class, new DateDeserializer())
                         .create());
 

@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
 import com.orochi.utfpr.levaeu.Pessoa;
 import com.orochi.utfpr.levaeu.R;
 import com.orochi.utfpr.levaeu.Sessao;
+import com.orochi.utfpr.levaeu.VerCaronaActiivty;
 
 import java.io.IOException;
 import java.util.List;
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-         pessoa = (Pessoa) getIntent().getSerializableExtra("pessoa");
+        pessoa = (Pessoa) getIntent().getSerializableExtra("pessoa");
         Sessao.getInstance().setPessoaLogada(pessoa);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -72,7 +74,14 @@ public class MainActivity extends AppCompatActivity
         nomeMenu.setText(pessoa.getDados().getNome());
         emailMenu.setText(pessoa.getDados().getEmail());
         this.lista = (ListView) findViewById(R.id.listaCaronas);
-
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity.this, VerCaronaActiivty.class);
+                intent.putExtra("carona", (Carona) parent.getItemAtPosition(position));
+                startActivity(intent);
+            }
+        });
         final PessoaListener p = RetrofitUtils.getRetrofit().create(PessoaListener.class);
         final Call<List<Carona>> r = p.getAllCaronas();
         r.enqueue(new Callback<List<Carona>>() {
@@ -168,7 +177,10 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, NewCaronaActivity.class);
             intent.putExtra("pessoa", pessoa);
             startActivity(intent);
-        } else if (id == R.id.verCaronasAprovar){
+        } else if (id == R.id.verCaronas){
+            Intent intent = new Intent(MainActivity.this, VerCaronasQueEstouActivity.class);
+            startActivity(intent);
+        }else if (id == R.id.verCaronasAprovar){
             Intent intent = new Intent(MainActivity.this, AprovarSaposActivity.class);
             startActivity(intent);
         }
