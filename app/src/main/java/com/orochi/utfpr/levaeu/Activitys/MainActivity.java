@@ -1,4 +1,4 @@
-package com.orochi.utfpr.levaeu;
+package com.orochi.utfpr.levaeu.Activitys;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,9 +16,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.orochi.utfpr.levaeu.ConexaoUTFPR.UTFPR.PuxarDadosAluno;
-
-import java.util.concurrent.ExecutionException;
+import com.orochi.utfpr.levaeu.Pessoa;
+import com.orochi.utfpr.levaeu.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -34,15 +33,6 @@ public class MainActivity extends AppCompatActivity
          pessoa = (Pessoa) getIntent().getSerializableExtra("pessoa");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

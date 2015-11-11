@@ -10,7 +10,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_new_carona"
 
-    tools:context="com.orochi.utfpr.levaeu.NewCaronaActivity">
+    tools:context="com.orochi.utfpr.levaeu.Activitys.NewCaronaActivity">
 
     <EditText
         android:layout_width="match_parent"

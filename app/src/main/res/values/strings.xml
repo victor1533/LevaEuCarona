@@ -20,4 +20,5 @@
         completions."
     </string>
     <string name="title_activity_new_carona">NewCaronaActivity</string>
+    <string name="title_activity_mapa">Map</string>
 </resources>

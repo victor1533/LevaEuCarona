@@ -1,4 +1,4 @@
-package com.orochi.utfpr.levaeu;
+package com.orochi.utfpr.levaeu.Activitys;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,7 +10,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.orochi.utfpr.levaeu.Callback;
+import com.orochi.utfpr.levaeu.Campus;
 import com.orochi.utfpr.levaeu.ConexaoUTFPR.UTFPR.PuxarDadosAluno;
+import com.orochi.utfpr.levaeu.Pessoa;
+import com.orochi.utfpr.levaeu.R;
 
 public class SplashActivity extends AppCompatActivity {
 

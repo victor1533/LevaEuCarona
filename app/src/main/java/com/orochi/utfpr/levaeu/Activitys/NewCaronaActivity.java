@@ -1,4 +1,4 @@
-package com.orochi.utfpr.levaeu;
+package com.orochi.utfpr.levaeu.Activitys;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +9,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.orochi.utfpr.levaeu.Carona;
+import com.orochi.utfpr.levaeu.Datas;
 import com.orochi.utfpr.levaeu.Listener.PessoaListener;
 import com.orochi.utfpr.levaeu.Listener.RespostaWS;
 import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
+import com.orochi.utfpr.levaeu.Local;
+import com.orochi.utfpr.levaeu.Pessoa;
+import com.orochi.utfpr.levaeu.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

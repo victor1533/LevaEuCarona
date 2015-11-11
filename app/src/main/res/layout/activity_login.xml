@@ -5,7 +5,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.orochi.utfpr.levaeu.LoginActivity">
+    tools:context="com.orochi.utfpr.levaeu.Activitys.LoginActivity">
 
     <!-- Login progress -->
     <ImageView
