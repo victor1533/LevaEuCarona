@@ -9,7 +9,9 @@ import retrofit.Call;
 import retrofit.http.Body;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
+import retrofit.http.GET;
 import retrofit.http.POST;
+import retrofit.http.Query;
 
 /**
  * Created by Poisson on 10/11/2015.
@@ -26,12 +28,16 @@ public interface PessoaListener {
     @POST("view/pessoa/mudarTipo.php")
     Call<RespostaWS> mudarTipo(@Field("codPessoa") int codPessoa);
 
-    @POST("view/carona/getAll.php")
+    @GET("view/carona/getAll.php")
     Call<List<Carona>> getAllCaronas();
 
-    @FormUrlEncoded
     @POST("view/pessoa/requisitarCarona.php")
-    Call<RespostaWS> requisitarCarona(@Body Carona carona, @Field("codPessoa") int codPessoa);
+    Call<RespostaWS> requisitarCarona(@Body Carona carona, @Query("codPessoa") int codPessoa);
 
+    @POST("view/pessoa/confirmaNaCarona.php")
+    Call<RespostaWS> confirmarCarona(@Body Carona carona, @Query("codPessoa") int codPessoa);
+
+    @GET("view/pessoa/getCaronasCriadas.php")
+    Call<List<Carona>> getCaronasCriadas(@Query("codPessoa") int codPessoa);
 
 }

@@ -13,11 +13,26 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.orochi.utfpr.levaeu.Activitys.AdaptersListView.AdapterCaronaListView;
+import com.orochi.utfpr.levaeu.Carona;
+import com.orochi.utfpr.levaeu.Listener.PessoaListener;
+import com.orochi.utfpr.levaeu.Listener.RespostaWS;
+import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
 import com.orochi.utfpr.levaeu.Pessoa;
 import com.orochi.utfpr.levaeu.R;
+import com.orochi.utfpr.levaeu.Sessao;
+
+import java.io.IOException;
+import java.util.List;
+
+import retrofit.Call;
+import retrofit.Callback;
+import retrofit.Response;
+import retrofit.Retrofit;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -25,12 +40,16 @@ public class MainActivity extends AppCompatActivity
         private TextView emailMenu;
    private DrawerLayout drawer;
     private Pessoa pessoa;
+    private ListView lista;
+    private AdapterCaronaListView adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
          pessoa = (Pessoa) getIntent().getSerializableExtra("pessoa");
+        Sessao.getInstance().setPessoaLogada(pessoa);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -52,6 +71,59 @@ public class MainActivity extends AppCompatActivity
         emailMenu = (TextView) headerLayout.findViewById(R.id.emailHeader);
         nomeMenu.setText(pessoa.getDados().getNome());
         emailMenu.setText(pessoa.getDados().getEmail());
+        this.lista = (ListView) findViewById(R.id.listaCaronas);
+
+        final PessoaListener p = RetrofitUtils.getRetrofit().create(PessoaListener.class);
+        final Call<List<Carona>> r = p.getAllCaronas();
+        r.enqueue(new Callback<List<Carona>>() {
+            @Override
+            public void onResponse(Response<List<Carona>> response, Retrofit retrofit) {
+                if (response.body() != null) {
+                    adapter = new AdapterCaronaListView(MainActivity.this, response.body());
+                    lista.setAdapter(adapter);
+                    Toast.makeText(MainActivity.this, "" + response.body().size(), Toast.LENGTH_SHORT).show();
+
+                } else {
+                    try {
+                        Toast.makeText(MainActivity.this, "Erro ao carregar caronas: " + response.errorBody().string(), Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+            t.printStackTrace();
+            }
+
+        });
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabio);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 PessoaListener p = RetrofitUtils.getRetrofit().create(PessoaListener.class);
+                 Call<List<Carona>> r = p.getAllCaronas();
+                r.enqueue(new Callback<List<Carona>>() {
+                    @Override
+                    public void onResponse(Response<List<Carona>> response, Retrofit retrofit) {
+                        if (response.body() != null) {
+                            adapter = new AdapterCaronaListView(MainActivity.this, response.body());
+                            lista.setAdapter(adapter);
+                        } else {
+                            Toast.makeText(MainActivity.this, "Erro ao carregar caronas", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Throwable t) {
+
+                    }
+
+                });
+            }
+        });
+
     }
 
     @Override
@@ -96,7 +168,11 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, NewCaronaActivity.class);
             intent.putExtra("pessoa", pessoa);
             startActivity(intent);
-        } else if(id == R.id.sairItem) {
+        } else if (id == R.id.verCaronasAprovar){
+            Intent intent = new Intent(MainActivity.this, AprovarSaposActivity.class);
+            startActivity(intent);
+        }
+        else if(id == R.id.sairItem) {
         finish();
         }else {
             Toast.makeText(getApplicationContext(), "Função não implementada", Toast.LENGTH_LONG).show();

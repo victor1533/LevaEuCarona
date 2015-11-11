@@ -14,6 +14,7 @@ import com.orochi.utfpr.levaeu.Campus;
 import com.orochi.utfpr.levaeu.ConexaoUTFPR.UTFPR.PuxarDadosAluno;
 import com.orochi.utfpr.levaeu.Pessoa;
 import com.orochi.utfpr.levaeu.R;
+import com.orochi.utfpr.levaeu.Sessao;
 
 /**
  * A login screen that offers login via email/password.
