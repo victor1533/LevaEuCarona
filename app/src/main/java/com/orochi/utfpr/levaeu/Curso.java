@@ -29,4 +29,13 @@ public class Curso implements Serializable {
     public void setCodCurso(int codCurso) {
         this.codCurso = codCurso;
     }
+
+    @Override
+    public boolean equals(Object obj){
+        Curso  curso = (Curso) obj;
+        if(curso.getCodCurso()==this.getCodCurso()){
+            return true;
+        }
+        return false;
+    }
 }

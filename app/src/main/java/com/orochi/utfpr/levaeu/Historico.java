@@ -24,7 +24,21 @@ public class Historico implements Serializable {
     private Pessoa dono;
 
 
+    public Pessoa getDono() {
+        return dono;
+    }
 
+    public void setDono(Pessoa dono) {
+        this.dono = dono;
+    }
+
+    public List<Carona> getCaronas() {
+        return caronas;
+    }
+
+    public void setCaronas(List<Carona> caronas) {
+        this.caronas = caronas;
+    }
 
     /**
      * A função verifica se a pessoa enviada por parametro já teve alguma carona neste histórico.
@@ -36,5 +50,14 @@ public class Historico implements Serializable {
         // TODO implement here
         return false;
     }
+    @Override
+    public boolean equals(Object obj){
+        Historico hist = (Historico) obj;
+        if((hist.getDono().equals(this.getDono()))&&(hist.getCaronas().containsAll(this.getCaronas()))){
+            return true;
+        }
+        return false;
+    }
+
 
 }
