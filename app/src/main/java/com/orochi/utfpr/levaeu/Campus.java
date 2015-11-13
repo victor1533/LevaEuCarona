@@ -49,4 +49,13 @@ public class Campus implements Serializable {
         campus.setCodCampus(3);
         return campus;
     }
+
+    @Override
+    public boolean equals(Object obj){
+        Campus camp = (Campus) obj;
+        if(camp.getCodCampus()==this.getCodCampus()){
+            return true;
+        }
+        return false;
+    }
 }

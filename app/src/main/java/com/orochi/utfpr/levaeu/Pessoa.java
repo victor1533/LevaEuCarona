@@ -137,5 +137,13 @@ public class Pessoa implements Serializable {
         // TODO implement here
         return null;
     }
+    @Override
+    public boolean equals(Object obj){
+        Pessoa pessoa = (Pessoa)obj;
+        if(pessoa.getCodPessoa()==this.getCodPessoa()){
+            return true;
+        }
+        return false;
+    }
 
 }

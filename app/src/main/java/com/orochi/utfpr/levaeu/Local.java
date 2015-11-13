@@ -39,4 +39,13 @@ public class Local implements Serializable {
     public void setCoordenada(CoordenadaGPS coordenada) {
         this.coordenada = coordenada;
     }
+
+    @Override
+    public boolean equals(Object obj){
+        Local local = (Local) obj;
+        if(local.getCodLocal()==this.getCodLocal()){
+            return true;
+        }
+        return false;
+    }
 }

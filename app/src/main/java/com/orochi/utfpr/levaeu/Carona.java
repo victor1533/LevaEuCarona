@@ -148,4 +148,13 @@ public class Carona implements Serializable {
         return false;
     }
 
+    @Override
+    public boolean equals(Object obj){
+        Carona carona = (Carona) obj;
+        if(carona.getCodCarona()==this.getCodCarona()){
+            return true;
+        }
+            return false;
+    }
+
 }
