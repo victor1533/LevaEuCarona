@@ -9,9 +9,24 @@ import java.util.*;
  */
 public class Like implements Serializable {
 
-    /**
-     * Default constructor
-     */
+    private int codLike;
+
+    public Pessoa getAvaliador() {
+        return avaliador;
+    }
+
+    public void setAvaliador(Pessoa avaliador) {
+        this.avaliador = avaliador;
+    }
+
+    public int getCodLike() {
+        return codLike;
+    }
+
+    public void setCodLike(int codLike) {
+        this.codLike = codLike;
+    }
+
     public Like() {
     }
 
@@ -20,4 +35,13 @@ public class Like implements Serializable {
      */
     private Pessoa avaliador;
 
+
+    @Override
+    public boolean equals(Object obj){
+        Like like = (Like) obj;
+        if(like.getCodLike()==this.getCodLike()){
+            return true;
+        }
+        return false;
+    }
 }
