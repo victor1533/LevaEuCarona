@@ -16,7 +16,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created by João on 10/09/2015.
+ * Created by Joo on 10/09/2015.
  */
 public class CaronaListView extends BaseAdapter implements Serializable
 {

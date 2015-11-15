@@ -9,16 +9,23 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.orochi.utfpr.levaeu.Carona;
+import com.orochi.utfpr.levaeu.Motorista;
 import com.orochi.utfpr.levaeu.R;
+import com.orochi.utfpr.levaeu.Sapo;
 
 public class MapaActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private Carona carona;
+    private Sapo sapo;
+    private Motorista motorista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -40,8 +47,17 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng markerCaronaOrigem = new LatLng(carona.getOrigem().getCoordenada().getLatitude(), carona.getOrigem().getCoordenada().getLongitude());
+        mMap.addMarker(new MarkerOptions().position(markerCaronaOrigem).title("Carona Origem"));
+
+        LatLng markerCaronaDestino = new LatLng(carona.getDestino().getCoordenada().getLatitude(),carona.getDestino().getCoordenada().getLongitude());
+        mMap.addMarker(new MarkerOptions().position(markerCaronaDestino).title("Carona Destino"));
+
+        // Implementar metodo getLocal do sapo.
+        LatLng markerSapo = new LatLng(-34, 151);
+        mMap.addMarker(new MarkerOptions().position(markerSapo).title("Marker do SAPO"));
+
+
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }
