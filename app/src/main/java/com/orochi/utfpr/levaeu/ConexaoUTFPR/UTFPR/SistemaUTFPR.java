@@ -77,12 +77,8 @@ public final class SistemaUTFPR {
 			this.header = autenticacao;
 			htmlPortal.setHtmlHome(htmlHome);
 			String htmlAtt = null;
-			try {
-				htmlAtt = helper.pegarHTML(URL_BASE + URL_ALTERACAOALUNO, autenticacao);
-			} catch (SocketTimeoutException e) {
-				e.printStackTrace();
-			}
-			htmlPortal.setHtmlAttCadastral(htmlAtt);
+
+//			htmlPortal.setHtmlAttCadastral(htmlAtt);
 		}
 		return true;
 	}
@@ -96,7 +92,7 @@ public final class SistemaUTFPR {
 		String ra = aluno.getStringRA().substring(0, aluno.getStringRA().length()-1);
 		
 		if(!htmlPortal.commitHome(aluno)) return null;
-		if(!htmlPortal.commitAttCadastral(aluno)) return null;
+//		if(!htmlPortal.commitAttCadastral(aluno)) return null;
 		String URL_DISCPMATRICULADAS = "/sistema/" +
 				"mpconfirmacaomatricula.pcTelaAluno?p_pesscodnr=" + ra + "&p_curscodnr="+ aluno.getCurso().getCodCurso() + 
 				"&p_alcuordemnr=" + aluno.getAlcuordemnr();
@@ -117,7 +113,7 @@ public final class SistemaUTFPR {
 
 		htmlPortal.setHtmlDiscpMatriculadas(htmlDISCP);
 		htmlPortal.setHtmlDadosBoletim(htmlBoletim);
-		if(!htmlPortal.commitDiscpMatric(aluno)) return null;
+//		if(!htmlPortal.commitDiscpMatric(aluno)) return null;
 		if(!htmlPortal.commitBoletim(aluno)) return null;
 		
 		aluno.setCampus(this.campus);
