@@ -70,7 +70,7 @@ public class VerCaronaActiivty extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PessoaListener p = RetrofitUtils.getRetrofit().create(PessoaListener.class);
-                Call<RespostaWS> r = p.fecharCarona(carona, carona.getCodCarona());
+                Call<RespostaWS> r = p.fecharCarona(carona.getCodCarona());
                 r.enqueue(new Callback<RespostaWS>() {
                     @Override
                     public void onResponse(Response<RespostaWS> response, Retrofit retrofit) {

@@ -29,7 +29,7 @@ public interface PessoaListener {
     Call<RespostaWS> mudarTipo(@Field("codPessoa") int codPessoa);
 
     @POST("view/carona/fecharCarona.php")
-    Call<RespostaWS> fecharCarona(@Body Carona carona, @Query("codCarona") int codCarona);
+    Call<RespostaWS> fecharCarona(@Query("codCarona") int codCarona);
 
     @GET("view/carona/getAll.php")
     Call<List<Carona>> getAllCaronas();
