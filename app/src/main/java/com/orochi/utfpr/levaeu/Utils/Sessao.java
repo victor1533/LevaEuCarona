@@ -1,4 +1,6 @@
-package com.orochi.utfpr.levaeu;
+package com.orochi.utfpr.levaeu.Utils;
+
+import com.orochi.utfpr.levaeu.Escopo.Pessoa;
 
 /**
  * Created by Poisson on 11/11/2015.

@@ -3,8 +3,6 @@ package com.orochi.utfpr.levaeu.ConexaoUTFPR.UTFPR;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 
-import javax.security.auth.login.LoginException;
-
 import org.apache.http.Header;
 import org.apache.http.NameValuePair;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -20,10 +18,10 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.util.Log;
 
-import com.orochi.utfpr.levaeu.Campus;
+import com.orochi.utfpr.levaeu.Escopo.Campus;
 import com.orochi.utfpr.levaeu.ConexaoUTFPR.Utilidades.WebHelper;
 import com.orochi.utfpr.levaeu.ConexaoUTFPR.Utilidades.WebUtils;
-import com.orochi.utfpr.levaeu.Pessoa;
+import com.orochi.utfpr.levaeu.Escopo.Pessoa;
 
 
 public final class SistemaUTFPR {

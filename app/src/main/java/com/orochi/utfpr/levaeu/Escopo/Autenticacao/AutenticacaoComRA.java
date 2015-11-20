@@ -1,4 +1,4 @@
-package com.orochi.utfpr.levaeu.Autenticacao;
+package com.orochi.utfpr.levaeu.Escopo.Autenticacao;
 
 import java.io.Serializable;
 

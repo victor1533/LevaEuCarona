@@ -5,26 +5,22 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
 
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.orochi.utfpr.levaeu.Callback;
-import com.orochi.utfpr.levaeu.Campus;
+import com.orochi.utfpr.levaeu.Utils.Callback;
+import com.orochi.utfpr.levaeu.Escopo.Campus;
 import com.orochi.utfpr.levaeu.Listener.PessoaListener;
 import com.orochi.utfpr.levaeu.Listener.RespostaWS;
 import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
-import com.orochi.utfpr.levaeu.Pessoa;
+import com.orochi.utfpr.levaeu.Escopo.Pessoa;
 
 import java.io.IOException;
 
-import retrofit.GsonConverterFactory;
 import retrofit.Response;
-import retrofit.Retrofit;
 
 public class PuxarDadosAluno extends AsyncTask<String, String, Pessoa> {
 

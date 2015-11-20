@@ -1,10 +1,10 @@
-package com.orochi.utfpr.levaeu;
-import com.orochi.utfpr.levaeu.Autenticacao.Autenticacao;
-import com.orochi.utfpr.levaeu.Autenticacao.AutenticacaoComRA;
+package com.orochi.utfpr.levaeu.Escopo;
+import com.orochi.utfpr.levaeu.Escopo.Autenticacao.AutenticacaoComRA;
 import com.orochi.utfpr.levaeu.Reputacao.Reputacao;
 
 import java.io.Serializable;
-import java.lang.String;import java.util.*;import java.util.List;
+import java.lang.String;
+import java.util.List;
 
 /**
  * 

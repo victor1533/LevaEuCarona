@@ -6,7 +6,6 @@ package com.orochi.utfpr.levaeu.Activitys.AdaptersListView;
 
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,20 +16,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.orochi.utfpr.levaeu.Carona;
-import com.orochi.utfpr.levaeu.Datas;
+import com.orochi.utfpr.levaeu.Escopo.Carona;
+import com.orochi.utfpr.levaeu.Utils.Datas;
 import com.orochi.utfpr.levaeu.Listener.PessoaListener;
 import com.orochi.utfpr.levaeu.Listener.RespostaWS;
 import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
-import com.orochi.utfpr.levaeu.Local;
-import com.orochi.utfpr.levaeu.Pessoa;
+import com.orochi.utfpr.levaeu.Escopo.Local;
 import com.orochi.utfpr.levaeu.R;
-import com.orochi.utfpr.levaeu.Sessao;
+import com.orochi.utfpr.levaeu.Utils.Sessao;
 
 import java.io.Serializable;
 import java.util.List;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import retrofit.Call;
 import retrofit.Callback;

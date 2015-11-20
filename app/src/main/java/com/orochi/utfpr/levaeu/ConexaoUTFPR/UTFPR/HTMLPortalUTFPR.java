@@ -1,11 +1,7 @@
 package com.orochi.utfpr.levaeu.ConexaoUTFPR.UTFPR;
 
-import java.util.ArrayList;
-
-import android.util.Log;
-
-import com.orochi.utfpr.levaeu.Curso;
-import com.orochi.utfpr.levaeu.Pessoa;
+import com.orochi.utfpr.levaeu.Escopo.Curso;
+import com.orochi.utfpr.levaeu.Escopo.Pessoa;
 
 public class HTMLPortalUTFPR {
 	private String htmlHome;

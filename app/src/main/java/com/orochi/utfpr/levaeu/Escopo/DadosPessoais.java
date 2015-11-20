@@ -1,6 +1,7 @@
-package com.orochi.utfpr.levaeu;
+package com.orochi.utfpr.levaeu.Escopo;
 import java.io.Serializable;
-import java.lang.String;import java.util.*;import java.util.Date;import java.util.List;
+import java.lang.String;
+import java.util.Date;import java.util.List;
 
 /**
  * 

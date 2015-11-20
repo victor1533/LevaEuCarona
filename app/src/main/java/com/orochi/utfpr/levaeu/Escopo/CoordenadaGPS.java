@@ -1,6 +1,5 @@
-package com.orochi.utfpr.levaeu;
+package com.orochi.utfpr.levaeu.Escopo;
 import java.io.Serializable;
-import java.util.*;
 
 /**
  * 
@@ -13,20 +12,16 @@ public class CoordenadaGPS implements Serializable {
     public CoordenadaGPS() {
     }
 
-    /**
-     * 
-     */
     private double latitude;
-
-    /**
-     * 
-     */
     private double longitude;
-
-    /**
-     * 
-     */
     private double precisao;
+
+    public CoordenadaGPS(double latitude, double longitude, double precisao) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.precisao = precisao;
+    }
+
 
     public double getPrecisao() {
         return precisao;

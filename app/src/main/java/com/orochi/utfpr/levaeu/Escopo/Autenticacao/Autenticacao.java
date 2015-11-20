@@ -1,5 +1,4 @@
-package com.orochi.utfpr.levaeu.Autenticacao;
-import java.util.*;
+package com.orochi.utfpr.levaeu.Escopo.Autenticacao;
 
 /**
  * 

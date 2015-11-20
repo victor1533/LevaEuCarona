@@ -2,6 +2,7 @@ package com.orochi.utfpr.levaeu.Activitys;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -10,13 +11,14 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.orochi.utfpr.levaeu.Carona;
+import com.orochi.utfpr.levaeu.Escopo.Carona;
 import com.orochi.utfpr.levaeu.GPS.GPSTracker;
-import com.orochi.utfpr.levaeu.Motorista;
+import com.orochi.utfpr.levaeu.Escopo.Motorista;
+import com.orochi.utfpr.levaeu.GPS.RotaAsyncTask;
 import com.orochi.utfpr.levaeu.R;
-import com.orochi.utfpr.levaeu.Sapo;
-import com.orochi.utfpr.levaeu.Sessao;
+import com.orochi.utfpr.levaeu.Escopo.Sapo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MapaActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -30,7 +32,6 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
-        caronas = (List<Carona>) getIntent().getSerializableExtra("caronas");
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -50,17 +51,20 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        caronas = (ArrayList<Carona>) getIntent().getSerializableExtra("caronas");
+        Toast.makeText(this, "" + caronas.get(0).getOrigem().getCoordenada().getLatitude(), Toast.LENGTH_SHORT).show();
         // Add a marker in Sydney and move the camera
 
         for(Carona carona : caronas){
             LatLng markerCaronaOrigem = new LatLng(carona.getOrigem().getCoordenada().getLatitude(), carona.getOrigem().getCoordenada().getLongitude());
-            mMap.addMarker(new MarkerOptions().position(markerCaronaOrigem).title("Carona Origem"));
+            LatLng markerCaronaDestino = new LatLng(carona.getDestino().getCoordenada().getLatitude(), carona.getDestino().getCoordenada().getLongitude());
 
-            LatLng markerCaronaDestino = new LatLng(carona.getDestino().getCoordenada().getLatitude(),carona.getDestino().getCoordenada().getLongitude());
+            mMap.addMarker(new MarkerOptions().position(markerCaronaOrigem).title("Carona Origem"));
             mMap.addMarker(new MarkerOptions().position(markerCaronaDestino).title("Carona Destino"));
 
+            new RotaAsyncTask(this, mMap).execute(carona.getOrigem(), carona.getDestino());
         }
+
 
         GPSTracker gps = new GPSTracker(MapaActivity.this);
             LatLng me = new LatLng(gps.getLatitude(), gps.getLongitude());

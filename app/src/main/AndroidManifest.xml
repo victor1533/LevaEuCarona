@@ -25,6 +25,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+
         <activity
             android:name=".Activitys.SplashActivity"
             android:label="@string/app_name"
@@ -79,10 +80,6 @@
             android:name=".Activitys.VerCaronasQueEstouActivity"
             android:label="@string/title_activity_ver_caronas_que_estou"
             android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" >
         </activity>
     </application>
 

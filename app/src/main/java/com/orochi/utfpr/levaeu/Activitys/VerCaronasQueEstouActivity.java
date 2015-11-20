@@ -10,11 +10,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.orochi.utfpr.levaeu.Activitys.AdaptersListView.AdapterCaronaListView;
-import com.orochi.utfpr.levaeu.Carona;
+import com.orochi.utfpr.levaeu.Escopo.Carona;
 import com.orochi.utfpr.levaeu.Listener.PessoaListener;
 import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
 import com.orochi.utfpr.levaeu.R;
-import com.orochi.utfpr.levaeu.Sessao;
+import com.orochi.utfpr.levaeu.Utils.Sessao;
 
 import java.io.IOException;
 import java.util.List;

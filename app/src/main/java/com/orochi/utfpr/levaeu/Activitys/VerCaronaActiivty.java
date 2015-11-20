@@ -6,21 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.orochi.utfpr.levaeu.Activitys.AdaptersListView.AdapterCaronaListView;
-import com.orochi.utfpr.levaeu.Carona;
-import com.orochi.utfpr.levaeu.Datas;
+import com.orochi.utfpr.levaeu.Escopo.Carona;
+import com.orochi.utfpr.levaeu.Utils.Datas;
 import com.orochi.utfpr.levaeu.Listener.PessoaListener;
 import com.orochi.utfpr.levaeu.Listener.RespostaWS;
 import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
-import com.orochi.utfpr.levaeu.Pessoa;
+import com.orochi.utfpr.levaeu.Escopo.Pessoa;
 import com.orochi.utfpr.levaeu.R;
-
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

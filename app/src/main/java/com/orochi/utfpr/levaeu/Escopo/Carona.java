@@ -1,8 +1,8 @@
-package com.orochi.utfpr.levaeu;
+package com.orochi.utfpr.levaeu.Escopo;
 import com.orochi.utfpr.levaeu.Reputacao.Reputacao;
 
 import java.io.Serializable;
-import java.util.*;import java.util.Date;import java.util.List;
+import java.util.Date;import java.util.List;
 
 /**
  * 

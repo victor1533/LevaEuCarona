@@ -1,5 +1,5 @@
 package com.orochi.utfpr.levaeu.Reputacao;
-import com.orochi.utfpr.levaeu.Pessoa;
+import com.orochi.utfpr.levaeu.Escopo.Pessoa;
 
 import java.io.Serializable;
 import java.util.*;

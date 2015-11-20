@@ -11,16 +11,13 @@
     tools:showIn="@layout/activity_new_carona"
 
     tools:context="com.orochi.utfpr.levaeu.Activitys.NewCaronaActivity">
-
-    <EditText
-        android:layout_width="match_parent"
+    <NumberPicker
+        android:id="@+id/numeroVagas"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/numVagasCampo"
-        android:inputType="number"
-        android:hint="Numero de vagas"
 
-        android:ems="10"
-        />
+        tools:targetApi="honeycomb" />
+
 
 
     <EditText
@@ -31,21 +28,44 @@
         android:hint="Data e hora da partida"
 
         android:id="@+id/dataHoraPartidaCampo" />
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Origem"
+        android:layout_weight="1"
+        android:editable="false"
+        android:id="@+id/origemCampo"
+         />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecionar"
+        android:id="@+id/selecOrigem"
+        android:layout_gravity="right" />
 
-        android:id="@+id/origemCampo" />
-
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:editable="false"
         android:hint="Destino"
-
+        android:layout_weight="1"
         android:id="@+id/DestinoCampo" />
-
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selecionar"
+            android:id="@+id/selecDestino"
+            android:layout_gravity="right" />
+    </LinearLayout>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

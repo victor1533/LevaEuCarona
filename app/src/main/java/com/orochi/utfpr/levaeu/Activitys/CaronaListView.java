@@ -5,12 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.orochi.utfpr.levaeu.Datas;
+import com.orochi.utfpr.levaeu.Utils.Datas;
 import com.orochi.utfpr.levaeu.R;
-import com.orochi.utfpr.levaeu.Carona;
+import com.orochi.utfpr.levaeu.Escopo.Carona;
 
 import java.io.Serializable;
 import java.util.ArrayList;

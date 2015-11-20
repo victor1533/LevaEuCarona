@@ -1,7 +1,7 @@
 package com.orochi.utfpr.levaeu.Listener;
 
-import com.orochi.utfpr.levaeu.Carona;
-import com.orochi.utfpr.levaeu.Pessoa;
+import com.orochi.utfpr.levaeu.Escopo.Carona;
+import com.orochi.utfpr.levaeu.Escopo.Pessoa;
 
 import java.util.List;
 

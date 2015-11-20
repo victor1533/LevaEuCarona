@@ -11,15 +11,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.orochi.utfpr.levaeu.Carona;
-import com.orochi.utfpr.levaeu.Datas;
+import com.orochi.utfpr.levaeu.Escopo.Carona;
 import com.orochi.utfpr.levaeu.Listener.PessoaListener;
 import com.orochi.utfpr.levaeu.Listener.RespostaWS;
 import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
-import com.orochi.utfpr.levaeu.Local;
-import com.orochi.utfpr.levaeu.Pessoa;
+import com.orochi.utfpr.levaeu.Escopo.Local;
+import com.orochi.utfpr.levaeu.Escopo.Pessoa;
 import com.orochi.utfpr.levaeu.R;
-import com.orochi.utfpr.levaeu.Sessao;
 
 import java.io.Serializable;
 import java.util.List;
