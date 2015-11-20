@@ -8,9 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.orochi.utfpr.levaeu.Carona;
 import com.orochi.utfpr.levaeu.Datas;
+import com.orochi.utfpr.levaeu.GPS.GPSTracker;
 import com.orochi.utfpr.levaeu.Listener.PessoaListener;
 import com.orochi.utfpr.levaeu.Listener.RespostaWS;
 import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
@@ -51,6 +55,7 @@ public class NewCaronaActivity extends AppCompatActivity {
                 DestinoCampo.setText("BLALBA");
 
         pessoa = (Pessoa) getIntent().getSerializableExtra("pessoa");
+
 
     }
     @OnClick(R.id.criaCarona)

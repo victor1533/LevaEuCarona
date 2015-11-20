@@ -24,4 +24,5 @@
     <string name="title_activity_aprovar_sapos">AprovarSaposActivity</string>
     <string name="title_activity_ver_carona_actiivty">VerCaronaActiivty</string>
     <string name="title_activity_ver_caronas_que_estou">VerCaronasQueEstouActivity</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

@@ -26,6 +26,7 @@ import com.orochi.utfpr.levaeu.R;
 import com.orochi.utfpr.levaeu.Sessao;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Call;
@@ -79,6 +80,11 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+
+        Intent intent = new Intent(MainActivity.this, MapaActivity.class);
+        intent.putExtra("caronas", new ArrayList<Carona>());
+        startActivity(intent);
+
         final PessoaListener p = RetrofitUtils.getRetrofit().create(PessoaListener.class);
         final Call<List<Carona>> r = p.getAllCaronas();
         r.enqueue(new Callback<List<Carona>>() {
