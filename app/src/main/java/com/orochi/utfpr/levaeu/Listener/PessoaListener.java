@@ -1,6 +1,7 @@
 package com.orochi.utfpr.levaeu.Listener;
 
 import com.orochi.utfpr.levaeu.Escopo.Carona;
+import com.orochi.utfpr.levaeu.Escopo.Historico;
 import com.orochi.utfpr.levaeu.Escopo.Pessoa;
 
 import java.util.List;
@@ -46,5 +47,7 @@ public interface PessoaListener {
     @GET("view/pessoa/verCaronasQueEstou.php")
     Call<List<Carona>> getCaronasQueEstou(@Query("codPessoa") int codPessoa);
 
+    @GET("view/pessoa/verHistorico.php")
+    Call<Historico> pegarHistorico(@Query("codPessoa") int codPessoa);
 
 }

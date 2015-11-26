@@ -82,7 +82,7 @@ public class AdapterCaronaListView extends BaseAdapter implements Serializable {
         final Carona carona = itens.get(position);
         Local origem = carona.getOrigem();
         Local destino = carona.getDestino();
-        itemHolder.origemDestino.setText(origem.getEndereco() + " para " + destino.getEndereco());
+        itemHolder.origemDestino.setText(origem.getNomeLocal() + " para " + destino.getNomeLocal() );
         itemHolder.dataHoraSaida.setText("Saída às " + Datas.DateToHHmm(carona.getDataHoraPartida()));
 
         if(carona.isCheia()){
