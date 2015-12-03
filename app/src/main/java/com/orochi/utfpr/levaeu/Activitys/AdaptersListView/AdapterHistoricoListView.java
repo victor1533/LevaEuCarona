@@ -19,6 +19,7 @@ import com.orochi.utfpr.levaeu.Listener.PessoaListener;
 import com.orochi.utfpr.levaeu.Listener.RespostaWS;
 import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
 import com.orochi.utfpr.levaeu.R;
+import com.orochi.utfpr.levaeu.Reputacao.Dislike;
 import com.orochi.utfpr.levaeu.Reputacao.Like;
 import com.orochi.utfpr.levaeu.Utils.Datas;
 import com.orochi.utfpr.levaeu.Utils.Sessao;
@@ -115,8 +116,28 @@ public class AdapterHistoricoListView extends BaseAdapter{
             @Override
             public void onClick(View v) {
                 /* VAI DAR DISLIKE */
-                Like like = new Like();
-                like.setAvaliador(Sessao.getInstance().getPessoaLogada());
+                Dislike dislike = new Dislike();
+                dislike.setAvaliador(Sessao.getInstance().getPessoaLogada());
+                CaronaListener c = RetrofitUtils.getRetrofit().create(CaronaListener.class);
+                Call<RespostaWS> c2 = c.darDislike(dislike);
+                c2.enqueue(new Callback<RespostaWS>() {
+                    @Override
+                    public void onResponse(Response<RespostaWS> response, Retrofit retrofit) {
+                        if (response != null) {
+                            if (response.body().isSucesso()) {
+                                Toast.makeText(contexto, "Dislike com sucesso!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(contexto, response.body().getResultado(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Throwable t) {
+
+                    }
+                });
+
             }
         });
         return view;

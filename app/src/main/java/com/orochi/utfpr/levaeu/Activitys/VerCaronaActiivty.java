@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.orochi.utfpr.levaeu.Escopo.Carona;
 import com.orochi.utfpr.levaeu.Utils.Datas;
 import com.orochi.utfpr.levaeu.Listener.PessoaListener;
@@ -17,6 +20,7 @@ import com.orochi.utfpr.levaeu.Listener.RespostaWS;
 import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
 import com.orochi.utfpr.levaeu.Escopo.Pessoa;
 import com.orochi.utfpr.levaeu.R;
+import com.orochi.utfpr.levaeu.Utils.Sessao;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -38,7 +42,7 @@ public class VerCaronaActiivty extends AppCompatActivity {
     TextView pessoaEsp;
     @Bind(R.id.listView)
     ListView listView;
-
+    Button solicitarCarona;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +51,7 @@ public class VerCaronaActiivty extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         final Carona carona = (Carona) getIntent().getSerializableExtra("carona");
+        solicitarCarona = (Button) findViewById(R.id.botaoSolicitaCarona);
         motVercarona.setText("Motorista: " + carona.getMotorista().getDados().getNome());
         origemDestino.setText("Origem: " + carona.getOrigem().getEndereco());
         destinoOrigem.setText("Destino: " + carona.getDestino().getEndereco());
@@ -60,7 +65,37 @@ public class VerCaronaActiivty extends AppCompatActivity {
                 carona.getSaposNaCarona());
 
         listView.setAdapter(arrayAdapter);
+        solicitarCarona.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(carona.isCheia()) return;
+                PessoaListener p = RetrofitUtils.getRetrofit().create(PessoaListener.class);
+                Call<RespostaWS> r = p.requisitarCarona(carona, Sessao.getInstance().getPessoaLogada().getCodPessoa());
+                Log.i("GSON", new Gson().toJson(carona));
+                r.enqueue(new Callback<RespostaWS>() {
+                    @Override
+                    public void onResponse(Response<RespostaWS> response, Retrofit retrofit) {
+                        if (response.body() != null) {
+                            if (response.body().isSucesso()) {
+                                Toast.makeText(VerCaronaActiivty.this, "Carona requisitada.", Toast.LENGTH_LONG).show();
 
+                            } else {
+                                Toast.makeText(VerCaronaActiivty.this, response.body().getResultado(), Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            Toast.makeText(VerCaronaActiivty.this, "EROOOO.", Toast.LENGTH_LONG).show();
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Throwable t) {
+                        Toast.makeText(VerCaronaActiivty.this, "EROOOO2.", Toast.LENGTH_LONG).show();
+
+                    }
+                });
+            }
+        });
         FloatingActionButton fecha = (FloatingActionButton) findViewById(R.id.fecha);
         fecha.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -187,6 +187,9 @@ public class MainActivity extends AppCompatActivity
         }else if (id == R.id.verCaronasAprovar){
             Intent intent = new Intent(MainActivity.this, AprovarSaposActivity.class);
             startActivity(intent);
+        }else if(id == R.id.verHistorico) {
+            Intent intent = new Intent(MainActivity.this, VerHistoricoActivity.class);
+            startActivity(intent);
         }
         else if(id == R.id.sairItem) {
         finish();
