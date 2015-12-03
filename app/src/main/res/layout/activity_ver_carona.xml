@@ -82,7 +82,7 @@
         android:text="Solicitar Carona"
         android:textSize="18sp"
         android:layout_weight="0"
-        android:id="@+id/button"
+        android:id="@+id/erroDesconhecido"
         android:layout_gravity="center_horizontal" />
 
 

@@ -8,8 +8,9 @@
             android:title="Ver caronas para aprovar" />
         <item android:id="@+id/verCaronas" android:icon="@android:drawable/ic_input_add"
             android:title="Ver caronas que você está" />
-        <item android:id="@+id/enviarMensagemItem" android:icon="@android:drawable/sym_action_email"
-            android:title="Enviar mensagem" />
+        <item android:id="@+id/verHistorico" android:icon="@android:drawable/sym_action_email"
+            android:title="Ver Historico" />
+
     </group>
 
     <item android:title="Configurações">
