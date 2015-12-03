@@ -10,8 +10,17 @@
     android:orientation="vertical"
     tools:showIn="@layout/activity_ver_carona_actiivty" tools:context=".VerCaronaActiivty">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Informações:"
+        android:textSize="15sp"
+        android:textColor="#000"
+
+        android:id="@+id/mot_vercarasasda" />
 
     <LinearLayout
+        android:background="#E1E1E1"
         android:orientation="vertical"
         android:layout_width="match_parent"
 
@@ -23,6 +32,7 @@
             android:layout_height="wrap_content"
             android:text="Motorista: Emanuel Mazzer"
             android:textSize="20sp"
+            android:maxLines="1"
             android:textColor="#000"
 
             android:id="@+id/mot_vercarona" />
@@ -31,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="De:  Mercado Parana"
+            android:maxLines="1"
             android:textSize="20sp"
             android:layout_marginTop="3dp"
             android:textColor="#000"
@@ -39,10 +50,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Para: UTFPR"
+            android:text="Para: rola da minha irma é  grande UTFPR"
             android:textSize="20sp"
             android:textColor="#000"
-
+            android:lines="1"
             android:layout_marginTop="3dp"
             android:id="@+id/destinoOrigem" />
 
@@ -50,6 +61,7 @@
             android:layout_marginTop="3dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="Saida às 13:00 do dia 15/11"
             android:textSize="20sp"
             android:textColor="#000"
@@ -64,42 +76,71 @@
             android:textColor="#000"
             android:id="@+id/vagasdis"/>
 
-        <TextView
-            android:layout_marginTop="3dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pessoas na espera: 3"
-            android:textSize="23sp"
-            android:textColor="#000"
-            android:id="@+id/pessoaEsp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pessoas dentro da carona:"
-            android:id="@+id/textView2" />
-    </LinearLayout>
+            android:id="@+id/textView3" />
 
-    <ListView
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:padding="10dp"
+            android:layout_weight="0.3"
+
+            android:id="@+id/listVie2" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pessoas na espera da carona:"
+            android:id="@+id/textView4" />
+
+
+        <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
         android:padding="10dp"
+        android:layout_weight="0.3"
+
         android:id="@+id/listView" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1"/>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.4"
+            android:orientation="horizontal">
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Solicitar Carona"
-        android:textSize="18sp"
-        android:layout_weight="0"
+        android:textSize="16sp"
+        android:layout_weight="0.5"
         android:id="@+id/button"
         android:layout_gravity="center_horizontal" />
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ver no Mapa"
+                android:textSize="16sp"
+                android:layout_weight="0.5"
+                android:id="@+id/button1"
+                android:layout_gravity="center_horizontal" />
 
+
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

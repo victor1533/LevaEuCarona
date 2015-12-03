@@ -25,6 +25,7 @@ public class MapaActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private Carona carona;
+    private Carona car;
     private Sapo sapo;
     private Motorista motorista;
     private List<Carona> caronas;

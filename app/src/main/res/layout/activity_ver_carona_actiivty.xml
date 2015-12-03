@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:fitsSystemWindows="true"
-    android:background="@drawable/side_nav_bar2"
+
     tools:context="com.orochi.utfpr.levaeu.Activitys.VerCaronaActiivty">
 
     <android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
@@ -18,9 +18,15 @@
 
     <include layout="@layout/content_ver_carona_actiivty" />
 
-    <android.support.design.widget.FloatingActionButton android:id="@+id/fecha"
+    <!--<android.support.design.widget.FloatingActionButton android:id="@+id/fecha"
         android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_gravity="bottom|end" android:layout_margin="@dimen/fab_margin"
         android:src="@android:drawable/ic_lock_idle_lock" />
+
+    <android.support.design.widget.FloatingActionButton android:id="@+id/cancela"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left" android:layout_margin="@dimen/fab_margin"
+        android:src="@android:drawable/ic_lock_idle_lock" />
+-->
 
 </android.support.design.widget.CoordinatorLayout>

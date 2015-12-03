@@ -29,6 +29,10 @@ public interface PessoaListener {
     @POST("view/pessoa/mudarTipo.php")
     Call<RespostaWS> mudarTipo(@Field("codPessoa") int codPessoa);
 
+    @POST("view/carona/cancelarCarona.php")
+    Call<RespostaWS> cancelarCarona(@Query("codCarona") int codCarona);
+
+
     @POST("view/carona/fecharCarona.php")
     Call<RespostaWS> fecharCarona(@Query("codCarona") int codCarona);
 
