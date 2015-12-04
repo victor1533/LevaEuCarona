@@ -6,7 +6,9 @@ import com.orochi.utfpr.levaeu.Reputacao.Like;
 
 import retrofit.Call;
 import retrofit.http.Body;
+import retrofit.http.GET;
 import retrofit.http.POST;
+import retrofit.http.Query;
 
 /**
  * Created by a1602632 on 25/11/15.
@@ -14,9 +16,9 @@ import retrofit.http.POST;
 public interface CaronaListener {
 
 
-    @POST("view/carona/darLike.php")
-    Call<RespostaWS> darLike(@Body Like like);
+    @GET("view/carona/darLike.php")
+    Call<RespostaWS> darLike(@Query("codPessoa") int codPessoa,@Query("codCarona") int codCarona);
 
-    @POST("view/carona/darLike.php")
-    Call<RespostaWS> darDislike(@Body Dislike dislike);
+    @GET("view/carona/darDislike.php")
+    Call<RespostaWS> darDislike(@Query("codPessoa") int codPessoa,@Query("codCarona") int codCarona);
 }

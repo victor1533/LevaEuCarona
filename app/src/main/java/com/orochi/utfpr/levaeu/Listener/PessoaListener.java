@@ -53,5 +53,7 @@ public interface PessoaListener {
 
     @GET("view/pessoa/verHistorico.php")
     Call<Historico> pegarHistorico(@Query("codPessoa") int codPessoa);
+    @GET("view/pessoa/getCaronasAvaliadas.php")
+    Call<List<Carona>> getCaronasAvaliadas(@Query("codPessoa") int codPessoa);
 
 }

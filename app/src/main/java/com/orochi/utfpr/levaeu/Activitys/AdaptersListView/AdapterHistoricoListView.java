@@ -40,11 +40,12 @@ public class AdapterHistoricoListView extends BaseAdapter{
     private LayoutInflater mInflater;
     private Historico itens;
     private Context contexto;
-
+    public static List<Carona> caronasAvaliadas;
     public AdapterHistoricoListView(Context contexto, Historico advs) {
         this.itens = advs;
         this.contexto = contexto;
         mInflater = LayoutInflater.from(contexto);
+
     }
 
 
@@ -65,7 +66,9 @@ public class AdapterHistoricoListView extends BaseAdapter{
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        ItemSuporte itemHolder;
+        final ItemSuporte itemHolder;
+
+
         if (view == null) {
             view = mInflater.inflate(R.layout.item_list_historico, null);
             ButterKnife.bind(this, view);
@@ -81,6 +84,11 @@ public class AdapterHistoricoListView extends BaseAdapter{
             itemHolder = (ItemSuporte) view.getTag();
         }
         final Carona carona = itens.getCaronas().get(position);
+        if(caronasAvaliadas.contains(carona)){
+            itemHolder.like.setVisibility(View.GONE);
+            itemHolder.dislike.setVisibility(View.GONE);
+        }
+
         itemHolder.origemDestino.setText(carona.getOrigem().getNomeLocal() + " para " + carona.getDestino().getNomeLocal() );
         itemHolder.diaHora.setText("Dia: " + Datas.DateToddMMyyyy(carona.getDataHoraPartida()) +
                 " às " + Datas.DateToHHmm(carona.getDataHoraPartida()));
@@ -88,16 +96,18 @@ public class AdapterHistoricoListView extends BaseAdapter{
             @Override
             public void onClick(View v) {
                 /* VAI DAR LIKE */
-                Like like = new Like();
-                like.setAvaliador(Sessao.getInstance().getPessoaLogada());
+
                 CaronaListener c = RetrofitUtils.getRetrofit().create(CaronaListener.class);
-                Call<RespostaWS> c2 = c.darLike(like);
+                Call<RespostaWS> c2 = c.darLike(Sessao.getInstance().getPessoaLogada().getCodPessoa(), carona.getCodCarona());
                 c2.enqueue(new Callback<RespostaWS>() {
                     @Override
                     public void onResponse(Response<RespostaWS> response, Retrofit retrofit) {
                         if(response != null){
                             if(response.body().isSucesso()){
                                 Toast.makeText(contexto, "Like com sucesso!", Toast.LENGTH_SHORT).show();
+                                itemHolder.like.setVisibility(View.GONE);
+                                itemHolder.dislike.setVisibility(View.GONE);
+
                             }else{
                                 Toast.makeText(contexto, response.body().getResultado(), Toast.LENGTH_SHORT).show();
                             }
@@ -119,13 +129,15 @@ public class AdapterHistoricoListView extends BaseAdapter{
                 Dislike dislike = new Dislike();
                 dislike.setAvaliador(Sessao.getInstance().getPessoaLogada());
                 CaronaListener c = RetrofitUtils.getRetrofit().create(CaronaListener.class);
-                Call<RespostaWS> c2 = c.darDislike(dislike);
+                Call<RespostaWS> c2 = c.darDislike(Sessao.getInstance().getPessoaLogada().getCodPessoa(), carona.getCodCarona());
                 c2.enqueue(new Callback<RespostaWS>() {
                     @Override
                     public void onResponse(Response<RespostaWS> response, Retrofit retrofit) {
                         if (response != null) {
                             if (response.body().isSucesso()) {
                                 Toast.makeText(contexto, "Dislike com sucesso!", Toast.LENGTH_SHORT).show();
+                                itemHolder.like.setVisibility(View.GONE);
+                                itemHolder.dislike.setVisibility(View.GONE);
                             } else {
                                 Toast.makeText(contexto, response.body().getResultado(), Toast.LENGTH_SHORT).show();
                             }
