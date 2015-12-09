@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/scrollView"
+    >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="#00000000">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:layout_gravity="center_horizontal">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:id="@+id/img_detail"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/common_google_signin_btn_icon_light_focused"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="JOÃO VITOR F. GRIS"
+                    android:textSize="20sp"
+                    android:textColor="#1e1e1e"
+                    android:id="@+id/nome_detail" />
+
+
+
+                <TextView
+                    android:paddingTop="4dp"
+                    android:layout_width="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="#1e1e1e"
+                    android:layout_height="wrap_content"
+                    android:text="nemo_xv@hotmail.com"
+                    android:id="@+id/email_detail" />
+
+                <TextView
+                    android:paddingTop="4dp"
+                    android:layout_width="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="#1e1e1e"
+                    android:layout_height="wrap_content"
+                    android:text="Participou de 12 caronas"
+                    android:id="@+id/Caronas" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:textSize="16sp"
+                        android:textColor="#1e1e1e"
+                        android:text="Idade:"
+                        android:layout_weight="0"
+                        android:id="@+id/textView3dd" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textSize="16sp"
+                        android:textColor="#1e1e1e"
+                        android:text="18 anos (nascido em 12/05/1997)"
+                        android:gravity="right"
+                        android:layout_weight="1"
+                        android:id="@+id/idade_detail" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:textSize="16sp"
+                        android:textColor="#1e1e1e"
+                        android:text="Sexo:"
+                        android:layout_weight="0"
+                        android:id="@+id/textView3dsd" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textSize="16sp"
+                        android:textColor="#1e1e1e"
+                        android:text="Masculino"
+                        android:gravity="right"
+                        android:layout_weight="1"
+                        android:id="@+id/sexov_detail" />
+                </LinearLayout>
+
+                <LinearLayout
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:textSize="16sp"
+                    android:textColor="#1e1e1e"
+                    android:text="Endereço:"
+                    android:layout_weight="0"
+                    android:id="@+id/textViewss" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="Rua JSON, 1401 - Centro"
+                    android:textSize="16sp"
+                    android:textColor="#1e1e1e"
+                    android:gravity="right"
+                    android:maxLines="1"
+                    android:layout_weight="1"
+                    android:id="@+id/endereco_detail" />
+            </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_marginTop="2dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:textSize="16sp"
+                    android:textColor="#1e1e1e"
+                    android:text="Curso:"
+                    android:layout_weight="0"
+                    android:id="@+id/textView2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="Ciencias da Computação"
+                    android:textSize="16sp"
+                    android:textColor="#1e1e1e"
+                    android:gravity="right"
+                    android:layout_weight="1"
+                    android:id="@+id/txt_curso" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ver Historico"
+            android:id="@+id/btn_hist"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.5" />
+
+
+    </LinearLayout></ScrollView>

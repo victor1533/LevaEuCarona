@@ -11,6 +11,8 @@ public class DadosPessoais implements Serializable {
     /**
      * Default constructor
      */
+
+
     private String nome;
     private Date dataNascimento;
     private Local enderecoResidencia;
