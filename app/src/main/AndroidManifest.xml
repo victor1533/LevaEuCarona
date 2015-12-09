@@ -81,7 +81,11 @@
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity android:name=".Activitys.VerHistoricoActivity" >
+
         </activity>
+        <activity android:name=".Activitys.DetalhesActivity">
+        </activity>
+
     </application>
 
 </manifest>

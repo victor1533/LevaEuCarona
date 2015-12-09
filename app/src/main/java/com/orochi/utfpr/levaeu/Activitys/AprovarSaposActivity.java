@@ -30,7 +30,7 @@ public class AprovarSaposActivity extends AppCompatActivity {
     private AdapterAprovarSapoListView adapter;
 
     @Bind(R.id.listaSaposPraAprovar)
-    private TextView txt;
+     TextView txt;
     ListView listaSaposPraAprovar;
 
     @Override
@@ -49,13 +49,9 @@ public class AprovarSaposActivity extends AppCompatActivity {
                 if (response.body() != null) {
 
                     MergeAdapter mergeAdapter = new MergeAdapter();
-                    if(response.body().size()==0){
-                        txt.setText("Nenhum Sapo na espera");
-                    }else{
-
                     for(Carona c : response.body()){
                         mergeAdapter.addAdapter(new AdapterAprovarSapoListView(AprovarSaposActivity.this, c));
-                    }
+
 
                         listaSaposPraAprovar.setAdapter(mergeAdapter);
 

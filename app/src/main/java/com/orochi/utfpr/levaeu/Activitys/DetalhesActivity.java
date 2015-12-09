@@ -24,7 +24,6 @@ public class DetalhesActivity extends AppCompatActivity {
     private TextView like, deslike, nome, sexo, idade, endereco, curso, email, participacao;
     private Button botao;
     private Pessoa pessoa;
-    private int cod;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +39,13 @@ public class DetalhesActivity extends AppCompatActivity {
         email = (TextView) findViewById(R.id.email_detail);
         curso = (TextView) findViewById(R.id.txt_curso);
         endereco = (TextView)findViewById(R.id.endereco_detail);
-        cod = getIntent().getIntExtra("cod", -1);
-        if(cod != -1){
-            pessoa = Sessao.getInstance().getPessoaLogada();
+        pessoa = Sessao.getInstance().getPessoaLogada();
 
-        }else{
+        like.setText("12");
 
+        deslike.setText("12");
 
-        }
-        like.setText(pessoa.getReputacao().getLikes().size());
-        deslike.setText(pessoa.getReputacao().getDislikes().size());
-         participacao.setText(pessoa.getHistorico().getCaronas().size());
+        participacao.setText(pessoa.getHistorico().getCaronas().size());
         nome.setText(pessoa.getDados().getNome());
         sexo.setText(pessoa.getDados().getSexo()=='m'?"Masculino":"Feminino");
         idade.setText(((pessoa.getDados().getDataNascimento().getYear()) - (new Date().getYear())));
