@@ -21,7 +21,7 @@ import java.util.Date;
  */
 public class DetalhesActivity extends AppCompatActivity {
 
-    private TextView nome, sexo, idade, endereco, curso, email;
+    private TextView like, deslike, nome, sexo, idade, endereco, curso, email, participacao;
     private Button botao;
     private Pessoa pessoa;
     private int cod;
@@ -31,7 +31,9 @@ public class DetalhesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
-        // Set up the login form.
+        like = (TextView) findViewById(R.id.likedetail);
+        deslike = (TextView) findViewById(R.id.deslikedetail);
+        participacao = (TextView) findViewById(R.id.Caronssas);
         nome = (TextView) findViewById(R.id.nome_detail);
         sexo = (TextView) findViewById(R.id.sexov_detail);
         idade = (TextView) findViewById(R.id.idade_detail);
@@ -46,11 +48,13 @@ public class DetalhesActivity extends AppCompatActivity {
 
 
         }
-
+        like.setText(pessoa.getReputacao().getLikes().size());
+        deslike.setText(pessoa.getReputacao().getDislikes().size());
+         participacao.setText(pessoa.getHistorico().getCaronas().size());
         nome.setText(pessoa.getDados().getNome());
         sexo.setText(pessoa.getDados().getSexo()=='m'?"Masculino":"Feminino");
         idade.setText(((pessoa.getDados().getDataNascimento().getYear()) - (new Date().getYear())));
-        curso.setText("BCC");
+        curso.setText(pessoa.getCurso().getNome());
         email.setText(pessoa.getDados().getEmail());
         endereco.setText(pessoa.getDados().getEnderecoResidencia().toString());
         Button botao = (Button) findViewById(R.id.btn_hist);

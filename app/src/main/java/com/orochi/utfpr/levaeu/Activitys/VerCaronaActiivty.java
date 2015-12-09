@@ -73,14 +73,14 @@ public class VerCaronaActiivty extends AppCompatActivity {
             destinoOrigem.setText("Destino: " + carona.getDestino().getEndereco());
             horarioSaida.setText("Saida as " + Datas.DateToHHmm(carona.getDataHoraPartida()) + " do dia " + Datas.DateToddMM(carona.getDataHoraPartida()));
             vagasdis.setText("Numero de vagas : " + (carona.getNumVagas() - carona.getSaposNaCarona().size()));
-            listVie2.setVisibility(View.GONE);
+            listView.setVisibility(View.GONE);
             textView4.setVisibility(View.GONE);
             ArrayAdapter<Pessoa> arrayAdapter = new ArrayAdapter<Pessoa>(
                     this,
                     android.R.layout.simple_list_item_1,
                     carona.getSaposNaCarona());
 
-            listView.setAdapter(arrayAdapter);
+            listVie2.setAdapter(arrayAdapter);
             button1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -137,14 +137,14 @@ public class VerCaronaActiivty extends AppCompatActivity {
                     android.R.layout.simple_list_item_1,
                     carona.getSaposNaCarona());
 
-            listView.setAdapter(arrayAdapter);
+            listVie2.setAdapter(arrayAdapter);
 
             ArrayAdapter<Pessoa> arrayAdapter2 = new ArrayAdapter<Pessoa>(
                     this,
                     android.R.layout.simple_list_item_1,
                     carona.getSaposNaEspera());
 
-            listVie2.setAdapter(arrayAdapter2);
+            listView.setAdapter(arrayAdapter2);
 
             button1.setText("fechar carona");
             button1.setOnClickListener(new View.OnClickListener() {

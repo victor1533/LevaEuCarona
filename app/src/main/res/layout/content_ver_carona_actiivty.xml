@@ -100,22 +100,22 @@
 
             android:id="@+id/listVie2" />
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pessoas na espera da carona:"
+            android:text="Pessoas na espara da carona:"
             android:id="@+id/textView4" />
 
-
         <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:padding="10dp"
-        android:layout_weight="0.3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            android:padding="10dp"
+            android:layout_weight="0.3"
 
-        android:id="@+id/listView" />
+            android:id="@+id/listView" />
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
