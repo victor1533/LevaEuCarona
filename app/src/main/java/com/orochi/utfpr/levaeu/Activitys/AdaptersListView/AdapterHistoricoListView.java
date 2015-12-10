@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.orochi.utfpr.levaeu.Escopo.Carona;
 import com.orochi.utfpr.levaeu.Escopo.Historico;
 import com.orochi.utfpr.levaeu.Retrofit.Listener.CaronaListener;
+import com.orochi.utfpr.levaeu.Retrofit.Listener.PessoaListener;
 import com.orochi.utfpr.levaeu.Retrofit.Listener.RespostaWS;
 import com.orochi.utfpr.levaeu.Retrofit.Listener.RetrofitUtils;
 import com.orochi.utfpr.levaeu.R;
@@ -34,7 +35,7 @@ public class AdapterHistoricoListView extends BaseAdapter{
     private LayoutInflater mInflater;
     private Historico itens;
     private Context contexto;
-    public static List<Carona> caronasAvaliadas;
+    public static List<Carona> caronasAvaliadas = null;
     public AdapterHistoricoListView(Context contexto, Historico advs) {
         this.itens = advs;
         this.contexto = contexto;
@@ -78,11 +79,33 @@ public class AdapterHistoricoListView extends BaseAdapter{
             itemHolder = (ItemSuporte) view.getTag();
         }
         final Carona carona = itens.getCaronas().get(position);
-        if(caronasAvaliadas.contains(carona)){
-            itemHolder.like.setVisibility(View.GONE);
-            itemHolder.dislike.setVisibility(View.GONE);
-        }
+        if(caronasAvaliadas == null) {
 
+            RetrofitUtils.getRetrofit().create(PessoaListener.class)
+                    .getCaronasAvaliadas(Sessao.getInstance().getPessoaLogada().getCodPessoa()).enqueue(new Callback<List<Carona>>() {
+                @Override
+                public void onResponse(Response<List<Carona>> response, Retrofit retrofit) {
+                    if (response != null) {
+                        caronasAvaliadas = response.body();
+                        if (caronasAvaliadas.contains(carona)) {
+                            itemHolder.like.setVisibility(View.GONE);
+                            itemHolder.dislike.setVisibility(View.GONE);
+                        }
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Throwable t) {
+                    t.printStackTrace();
+                }
+            });
+        }else{
+            if (caronasAvaliadas.contains(carona)) {
+                itemHolder.like.setVisibility(View.GONE);
+                itemHolder.dislike.setVisibility(View.GONE);
+            }
+        }
         itemHolder.origemDestino.setText(carona.getOrigem().getNomeLocal() + " para " + carona.getDestino().getNomeLocal() );
         itemHolder.diaHora.setText("Dia: " + Datas.DateToddMMyyyy(carona.getDataHoraPartida()) +
                 " às " + Datas.DateToHHmm(carona.getDataHoraPartida()));

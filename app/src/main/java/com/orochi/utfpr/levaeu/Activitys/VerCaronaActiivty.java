@@ -24,13 +24,10 @@ import com.orochi.utfpr.levaeu.Utils.Datas;
 import com.orochi.utfpr.levaeu.Utils.Sessao;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnItemClick;
-import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
 import retrofit.Retrofit;
@@ -60,6 +57,9 @@ public class VerCaronaActiivty extends AppCompatActivity {
     ListView listaSapos;
 
     Carona carona = null;
+    @Bind(R.id.btnFecharCarona)
+    Button btnFecharCarona;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,17 +68,19 @@ public class VerCaronaActiivty extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         carona = (Carona) getIntent().getSerializableExtra("carona");
-        if(Sessao.getInstance().getPessoaLogada().equals(carona.getMotorista())){
+        if (Sessao.getInstance().getPessoaLogada().equals(carona.getMotorista())) {
             containerMotorista.setVisibility(View.GONE);
             lblMotorista.setVisibility(View.GONE);
             btnSolicitar.setVisibility(View.GONE);
             btnVerMapa.setVisibility(View.GONE);
+        } else {
+            btnFecharCarona.setVisibility(View.GONE);
         }
-        txtNomeMotorista.setText(""+ carona.getMotorista().getDados().getNome());
+        txtNomeMotorista.setText("" + carona.getMotorista().getDados().getNome());
         txtOrigem.setText(carona.getOrigem().getNomeLocal());
         txtDestino.setText(carona.getDestino().getNomeLocal());
         txtHorario.setText(Datas.DateToHHmm(carona.getDataHoraPartida()) + "h");
-        txtNumVagasDisponiveis.setText(""+carona.getNumVagasDisponiveis());
+        txtNumVagasDisponiveis.setText("" + carona.getNumVagasDisponiveis());
 
         ArrayAdapter<Pessoa> arrayAdapter = new ArrayAdapter<Pessoa>(
                 this,
@@ -95,17 +97,41 @@ public class VerCaronaActiivty extends AppCompatActivity {
             }
         });
     }
+    @OnClick(R.id.btnFecharCarona)
+    public void fecharCarona(){
+        RetrofitUtils.getRetrofit().create(PessoaListener.class)
+                .fecharCarona(carona.getCodCarona()).enqueue(new Callback<RespostaWS>() {
+            @Override
+            public void onResponse(Response<RespostaWS> response, Retrofit retrofit) {
+                if(response.body()!= null) {
+                    if(response.body().isSucesso()) {
+                        Toast.makeText(VerCaronaActiivty.this, "Carona fechada com sucesso",
+                                Toast.LENGTH_LONG).show();
+                    }else{
+                        Toast.makeText(VerCaronaActiivty.this, "Erro ao fechar carona",
+                                Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
 
+            @Override
+            public void onFailure(Throwable t) {
+                t.printStackTrace();
+            }
+        });
+
+    }
     @OnClick(R.id.btnVerMapa)
-    public void verCaronaMapa(){
+    public void verCaronaMapa() {
         ArrayList<Carona> caronas = new ArrayList<>();
         caronas.add(carona);
         Intent intent = new Intent(VerCaronaActiivty.this, MapaActivity.class);
         intent.putExtra("caronas", caronas);
         startActivity(intent);
     }
+
     @OnClick(R.id.btnSolicitar)
-    public void solicitarCarona(){
+    public void solicitarCarona() {
         RetrofitUtils.getRetrofit().create(PessoaListener.class)
                 .requisitarCarona(carona, Sessao.getInstance().getPessoaLogada().getCodPessoa()).enqueue(new Callback<RespostaWS>() {
             @Override
@@ -133,7 +159,7 @@ public class VerCaronaActiivty extends AppCompatActivity {
     }
 
     @OnClick(R.id.containerMotorista)
-    public void verPerfilMotorista(){
+    public void verPerfilMotorista() {
         Intent intent = new Intent(VerCaronaActiivty.this, VerPerfilActivity.class);
         intent.putExtra("pessoa", carona.getMotorista());
         startActivity(intent);

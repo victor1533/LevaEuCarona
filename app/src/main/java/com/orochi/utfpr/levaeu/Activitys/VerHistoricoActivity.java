@@ -39,12 +39,7 @@ public class VerHistoricoActivity extends AppCompatActivity {
                 if(response != null){
                     historico = response.body();
                     PessoaListener p = RetrofitUtils.getRetrofit().create(PessoaListener.class);
-                    try {
-                        Response<List<Carona>> execute =  p.getCaronasAvaliadas(Sessao.getInstance().getPessoaLogada().getCodPessoa()).execute();
-                        AdapterHistoricoListView.caronasAvaliadas = execute.body();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+
 
                     AdapterHistoricoListView adapter = new AdapterHistoricoListView(VerHistoricoActivity.this, historico);
                     lista.setAdapter(adapter);

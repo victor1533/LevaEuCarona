@@ -19,13 +19,18 @@
           android:layout_gravity="right"
           android:layout_height="wrap_content"
           android:orientation="horizontal">
+          <Button android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Fechar carona"
+              android:textSize="10sp"
+              android:id="@+id/btnFecharCarona"
 
+              />
         <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ver no mapa"
             android:textSize="10sp"
             android:id="@+id/btnVerMapa"
-
             />
           <Button android:layout_width="wrap_content"
               android:layout_height="wrap_content"

@@ -186,9 +186,6 @@ public class MainActivity extends AppCompatActivity
         }else if(id == R.id.verHistorico) {
             Intent intent = new Intent(MainActivity.this, VerHistoricoActivity.class);
             startActivity(intent);
-        }else if(id == R.id.verDetalhes) {
-            Intent intent = new Intent(MainActivity.this, DetalhesActivity.class);
-            startActivity(intent);
         }
         else if(id == R.id.sairItem) {
         finish();
