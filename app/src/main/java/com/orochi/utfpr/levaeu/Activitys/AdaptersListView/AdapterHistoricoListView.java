@@ -1,7 +1,6 @@
 package com.orochi.utfpr.levaeu.Activitys.AdaptersListView;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,17 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.orochi.utfpr.levaeu.Escopo.Carona;
 import com.orochi.utfpr.levaeu.Escopo.Historico;
-import com.orochi.utfpr.levaeu.Escopo.Local;
-import com.orochi.utfpr.levaeu.Listener.CaronaListener;
-import com.orochi.utfpr.levaeu.Listener.PessoaListener;
-import com.orochi.utfpr.levaeu.Listener.RespostaWS;
-import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
+import com.orochi.utfpr.levaeu.Retrofit.Listener.CaronaListener;
+import com.orochi.utfpr.levaeu.Retrofit.Listener.RespostaWS;
+import com.orochi.utfpr.levaeu.Retrofit.Listener.RetrofitUtils;
 import com.orochi.utfpr.levaeu.R;
-import com.orochi.utfpr.levaeu.Reputacao.Dislike;
-import com.orochi.utfpr.levaeu.Reputacao.Like;
 import com.orochi.utfpr.levaeu.Utils.Datas;
 import com.orochi.utfpr.levaeu.Utils.Sessao;
 
@@ -126,8 +120,7 @@ public class AdapterHistoricoListView extends BaseAdapter{
             @Override
             public void onClick(View v) {
                 /* VAI DAR DISLIKE */
-                Dislike dislike = new Dislike();
-                dislike.setAvaliador(Sessao.getInstance().getPessoaLogada());
+
                 CaronaListener c = RetrofitUtils.getRetrofit().create(CaronaListener.class);
                 Call<RespostaWS> c2 = c.darDislike(Sessao.getInstance().getPessoaLogada().getCodPessoa(), carona.getCodCarona());
                 c2.enqueue(new Callback<RespostaWS>() {

@@ -22,6 +22,7 @@ import com.orochi.utfpr.levaeu.Escopo.Campus;
 import com.orochi.utfpr.levaeu.ConexaoUTFPR.Utilidades.WebHelper;
 import com.orochi.utfpr.levaeu.ConexaoUTFPR.Utilidades.WebUtils;
 import com.orochi.utfpr.levaeu.Escopo.Pessoa;
+import com.orochi.utfpr.levaeu.Escopo.Sapo;
 
 
 public final class SistemaUTFPR {
@@ -86,7 +87,7 @@ public final class SistemaUTFPR {
 		if(!flagConectado || !WebUtils.verificaConexao(contexto)){
 			throw new IllegalStateException("Voc� n�o est� conectado na rede da UTFPR!");
 		}
-		Pessoa aluno = new Pessoa(this.RA, this.senha, this.campus);
+		Pessoa aluno = new Sapo(this.RA, this.senha, this.campus);
 		String ra = aluno.getStringRA().substring(0, aluno.getStringRA().length()-1);
 		
 		if(!htmlPortal.commitHome(aluno)) return null;

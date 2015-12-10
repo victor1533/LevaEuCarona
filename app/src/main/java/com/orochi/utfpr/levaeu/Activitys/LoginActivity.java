@@ -9,6 +9,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.orochi.utfpr.levaeu.Escopo.Motorista;
+import com.orochi.utfpr.levaeu.Escopo.Sapo;
 import com.orochi.utfpr.levaeu.Utils.Callback;
 import com.orochi.utfpr.levaeu.Escopo.Campus;
 import com.orochi.utfpr.levaeu.ConexaoUTFPR.UTFPR.PuxarDadosAluno;
@@ -98,8 +100,12 @@ public class LoginActivity extends AppCompatActivity {
                 public void run(Object aluno){
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra("pessoa", (Pessoa) aluno);
-                    startActivity(intent);
+                    if(aluno instanceof Sapo) {
+                        intent.putExtra("pessoa", (Sapo) aluno);
+                    }else{
+                        intent.putExtra("pessoa", (Motorista) aluno);
+                    }
+                        startActivity(intent);
                 }}, Campus.getCampoMourao());
             pDados.execute(login, password);
 

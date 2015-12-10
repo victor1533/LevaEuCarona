@@ -82,6 +82,11 @@
         </activity>
         <activity android:name=".Activitys.VerHistoricoActivity" >
         </activity>
+        <activity
+            android:name=".Activitys.VerPerfilActivity"
+            android:label="@string/title_activity_ver_perfil"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

@@ -10,10 +10,30 @@
     <android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
         android:layout_width="match_parent" android:theme="@style/AppTheme.AppBarOverlay"
         >
+
         <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
             android:layout_width="match_parent" android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary" app:popupTheme="@style/AppTheme.PopupOverlay" />
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_gravity="right"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
 
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ver no mapa"
+            android:textSize="10sp"
+            android:id="@+id/btnVerMapa"
+
+            />
+          <Button android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Soliciar carona"
+              android:textSize="10sp"
+              android:id="@+id/btnSolicitar"
+              />
+      </LinearLayout>
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_ver_carona_actiivty" />

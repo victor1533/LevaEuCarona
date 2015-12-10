@@ -13,9 +13,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.orochi.utfpr.levaeu.Utils.Callback;
 import com.orochi.utfpr.levaeu.Escopo.Campus;
-import com.orochi.utfpr.levaeu.Listener.PessoaListener;
-import com.orochi.utfpr.levaeu.Listener.RespostaWS;
-import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
+import com.orochi.utfpr.levaeu.Retrofit.Listener.PessoaListener;
+import com.orochi.utfpr.levaeu.Retrofit.Listener.RespostaWS;
+import com.orochi.utfpr.levaeu.Retrofit.Listener.RetrofitUtils;
 import com.orochi.utfpr.levaeu.Escopo.Pessoa;
 
 import java.io.IOException;

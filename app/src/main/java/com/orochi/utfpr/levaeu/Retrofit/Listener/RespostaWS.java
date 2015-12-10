@@ -1,4 +1,4 @@
-package com.orochi.utfpr.levaeu.Listener;
+package com.orochi.utfpr.levaeu.Retrofit.Listener;
 
 /**
  * Created by Poisson on 10/11/2015.

@@ -1,6 +1,6 @@
 package com.orochi.utfpr.levaeu.Escopo;
 import com.orochi.utfpr.levaeu.Escopo.Autenticacao.AutenticacaoComRA;
-import com.orochi.utfpr.levaeu.Reputacao.Reputacao;
+import com.orochi.utfpr.levaeu.Escopo.Reputacao.Reputacao;
 
 import java.io.Serializable;
 import java.lang.String;
@@ -97,46 +97,7 @@ public class Pessoa implements Serializable {
         this.tpcurcodnr = tpcurcodnr;
     }
 
-    public List<Pessoa> getPessoasProximas() {
-        // TODO implement here
-        return null;
-    }
 
-    /**
-     * @return
-     */
-    public List<Motorista> getMotoristasProximos() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public List<Sapo> getSaposProximos() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param destinatario 
-     * @param mensagem
-     */
-
-    /**
-     * @param pessoa
-     */
-    public void teveInteracao(Pessoa pessoa) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public Historico getHistorico() {
-        // TODO implement here
-        return null;
-    }
     @Override
     public boolean equals(Object obj){
         Pessoa pessoa = (Pessoa)obj;

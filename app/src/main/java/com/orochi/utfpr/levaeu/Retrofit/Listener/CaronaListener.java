@@ -1,13 +1,7 @@
-package com.orochi.utfpr.levaeu.Listener;
-
-import com.orochi.utfpr.levaeu.Escopo.Carona;
-import com.orochi.utfpr.levaeu.Reputacao.Dislike;
-import com.orochi.utfpr.levaeu.Reputacao.Like;
+package com.orochi.utfpr.levaeu.Retrofit.Listener;
 
 import retrofit.Call;
-import retrofit.http.Body;
 import retrofit.http.GET;
-import retrofit.http.POST;
 import retrofit.http.Query;
 
 /**

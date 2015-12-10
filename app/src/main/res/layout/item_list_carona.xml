@@ -1,52 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:padding="10dp">
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:layout_height="match_parent">
 
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="right"
        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="UTFPR para Tio Patinhas"
-            android:textSize="18sp"
-            android:id="@+id/origemDestino" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Saída às 18:00hr"
-            android:textSize="12sp"
 
-            android:id="@+id/horarioSaida" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#0caf00"
+                android:text="Origem" />
+            <EditText
+                android:id="@+id/txtOrigem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0caf00"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:enabled="false"
+                android:text="Universidade Tecnológica Federal do Paraná"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#0288d1"
+                android:text="Destino" />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtDestino"
+                android:background="#0288d1"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:enabled="false"
+                android:text="Supermercado Carreira"/>
+        </LinearLayout>
 
     </LinearLayout>
 
 
-
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="right">
-
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:id="@+id/mapinha"
-            android:paddingRight="15dp"
-            android:src="@drawable/mapa"/>
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/joinha"
-            android:src="@drawable/joinha"/>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="left">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:gravity="left"
+            android:textSize="14sp"
+            android:text="Saída às: " />
+        <TextView
+            android:id="@+id/txtHoraSaida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#0288d1"
+            android:gravity="left"
+            android:textSize="18sp"
+            android:layout_marginRight="30dp"
+            android:text="18:00h"/>
     </LinearLayout>
 
+    <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:orientation="horizontal"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true">
+                    <TextView
+                        android:id="@+id/txtVagasDisp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#0caf00"
+                        android:textSize="18sp"
+                        android:text="4" />
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#0caf00"
+                        android:textSize="14sp"
+                        android:text=" vagas disponíveis" />
+            </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

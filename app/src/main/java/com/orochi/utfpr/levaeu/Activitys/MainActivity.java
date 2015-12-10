@@ -19,14 +19,13 @@ import android.widget.Toast;
 
 import com.orochi.utfpr.levaeu.Activitys.AdaptersListView.AdapterCaronaListView;
 import com.orochi.utfpr.levaeu.Escopo.Carona;
-import com.orochi.utfpr.levaeu.Listener.PessoaListener;
-import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
+import com.orochi.utfpr.levaeu.Retrofit.Listener.PessoaListener;
+import com.orochi.utfpr.levaeu.Retrofit.Listener.RetrofitUtils;
 import com.orochi.utfpr.levaeu.Escopo.Pessoa;
 import com.orochi.utfpr.levaeu.R;
 import com.orochi.utfpr.levaeu.Utils.Sessao;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Call;
@@ -72,14 +71,6 @@ public class MainActivity extends AppCompatActivity
         nomeMenu.setText(pessoa.getDados().getNome());
         emailMenu.setText(pessoa.getDados().getEmail());
         this.lista = (ListView) findViewById(R.id.listaCaronas);
-        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, VerCaronaActiivty.class);
-                intent.putExtra("carona", (Carona) parent.getItemAtPosition(position));
-                startActivity(intent);
-            }
-        });
 
 
         final PessoaListener p = RetrofitUtils.getRetrofit().create(PessoaListener.class);
@@ -87,14 +78,19 @@ public class MainActivity extends AppCompatActivity
         r.enqueue(new Callback<List<Carona>>() {
             @Override
             public void onResponse(Response<List<Carona>> response, Retrofit retrofit) {
-                if (response.body() != null) {
+                if (response.body() != null){
                     adapter = new AdapterCaronaListView(MainActivity.this, response.body());
                     lista.setAdapter(adapter);
-                    Intent intent = new Intent(MainActivity.this, MapaActivity.class);
-                    intent.putExtra("caronas", new ArrayList<Carona>(response.body()));
-                    startActivity(intent);
 
-                    Toast.makeText(MainActivity.this, "" + response.body().size(), Toast.LENGTH_SHORT).show();
+                    lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Intent intent = new Intent(MainActivity.this, VerCaronaActiivty.class);
+                            intent.putExtra("carona", (Carona) parent.getItemAtPosition(position));
+                            startActivity(intent);
+                        }
+                    });
+
 
                 } else {
                     try {
@@ -130,7 +126,7 @@ public class MainActivity extends AppCompatActivity
 
                     @Override
                     public void onFailure(Throwable t) {
-
+                        t.printStackTrace();
                     }
 
                 });

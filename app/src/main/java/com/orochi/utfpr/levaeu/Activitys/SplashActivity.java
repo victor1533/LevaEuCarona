@@ -32,15 +32,7 @@ public class SplashActivity extends AppCompatActivity {
             }}, Campus.getCampoMourao());
 
         pDados.execute("1602632", "purolestat123");
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null
-                        ).show();
-            }
-        });
+
     }
 
     @Override

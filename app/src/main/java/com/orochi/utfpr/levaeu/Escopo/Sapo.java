@@ -1,4 +1,6 @@
 package com.orochi.utfpr.levaeu.Escopo;
+import com.orochi.utfpr.levaeu.Escopo.Autenticacao.AutenticacaoComRA;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,7 +14,11 @@ public class Sapo extends Pessoa implements Serializable {
      */
     public Sapo() {
     }
-
+    public Sapo(int RA, String senha, Campus campus) {
+        this.setDados(new DadosPessoais());
+        this.setAutenticacao(new AutenticacaoComRA("" + RA, senha));
+        this.setCampus(campus);
+    }
     /**
      * @return
      */

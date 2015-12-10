@@ -1,5 +1,5 @@
 package com.orochi.utfpr.levaeu.Escopo;
-import com.orochi.utfpr.levaeu.Reputacao.Reputacao;
+import com.orochi.utfpr.levaeu.Escopo.Reputacao.Reputacao;
 
 import java.io.Serializable;
 import java.util.Date;import java.util.List;
@@ -22,7 +22,7 @@ public class Carona implements Serializable {
     private Local origem;
     private Local destino;
     private Date dataHoraPartida;
-    private Reputacao avaliacaoCarona;
+    private Reputacao reputacao;
 
     public int getCodCarona() {
         return codCarona;
@@ -89,14 +89,17 @@ public class Carona implements Serializable {
     }
 
 
-    public Reputacao getAvaliacaoCarona() {
-        return avaliacaoCarona;
+    public Reputacao getReputacao() {
+        return reputacao;
     }
 
-    public void setAvaliacaoCarona(Reputacao avaliacaoCarona) {
-        this.avaliacaoCarona = avaliacaoCarona;
+    public void setReputacao(Reputacao reputacao) {
+        this.reputacao = reputacao;
     }
+    public int getNumVagasDisponiveis(){
+        return this.numVagas - this.getSaposNaCarona().size();
 
+    }
     /**
      * Adiciona um sapo nesta carona. Retorna true se realizou a inclusão com sucesso.
      * Retorna false se houve falha na inserção do sapo na carona ou o limite de sapos já foi atingido

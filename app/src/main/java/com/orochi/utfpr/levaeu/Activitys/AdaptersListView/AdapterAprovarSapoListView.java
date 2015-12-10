@@ -12,9 +12,9 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.orochi.utfpr.levaeu.Escopo.Carona;
-import com.orochi.utfpr.levaeu.Listener.PessoaListener;
-import com.orochi.utfpr.levaeu.Listener.RespostaWS;
-import com.orochi.utfpr.levaeu.Listener.RetrofitUtils;
+import com.orochi.utfpr.levaeu.Retrofit.Listener.PessoaListener;
+import com.orochi.utfpr.levaeu.Retrofit.Listener.RespostaWS;
+import com.orochi.utfpr.levaeu.Retrofit.Listener.RetrofitUtils;
 import com.orochi.utfpr.levaeu.Escopo.Local;
 import com.orochi.utfpr.levaeu.Escopo.Pessoa;
 import com.orochi.utfpr.levaeu.R;

@@ -8,139 +8,136 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:orientation="vertical"
+    android:background="#e1e6eb"
     tools:showIn="@layout/activity_ver_carona_actiivty" tools:context=".VerCaronaActiivty">
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Informações:"
-        android:textSize="15sp"
-        android:textColor="#000"
-
-        android:id="@+id/mot_vercarasasda" />
-
+        android:text="Motorista:"
+        android:textColor="#0288d1"
+        android:id="@+id/lblMotorista" />
     <LinearLayout
-        android:background="#E1E1E1"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
-        android:padding="8dp">
-
+        android:id="@+id/containerMotorista"
+        android:padding="5dp"
+        android:background="#FFFFFF">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/pessoaicone"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Motorista: Emanuel Mazzer"
-            android:textSize="20sp"
-            android:maxLines="1"
-            android:textColor="#000"
-
-            android:id="@+id/mot_vercarona" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="De:  Mercado Parana"
-            android:maxLines="1"
-            android:textSize="20sp"
-            android:layout_marginTop="3dp"
-            android:textColor="#000"
-            android:id="@+id/origemDestino" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Para: rola da minha irma é  grande UTFPR"
-            android:textSize="20sp"
-            android:textColor="#000"
-            android:lines="1"
-            android:layout_marginTop="3dp"
-            android:id="@+id/destinoOrigem" />
-
-        <TextView
-            android:layout_marginTop="3dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="Saida às 13:00 do dia 15/11"
-            android:textSize="20sp"
-            android:textColor="#000"
-            android:id="@+id/horarioSaida" />
-
-        <TextView
-            android:layout_marginTop="3dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4 vagas disponiveis"
-            android:textSize="23sp"
-            android:textColor="#000"
-            android:id="@+id/vagasdis"/>
-
-
+            android:text="Victor Matheus Fernandes dos Santos"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/txtNomeMotorista" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pessoas dentro da carona:"
-            android:id="@+id/textView3" />
-
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FFFFFF"
-            android:padding="10dp"
-            android:layout_weight="0.3"
-
-            android:id="@+id/listVie2" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pessoas na espera da carona:"
-            android:id="@+id/textView4" />
-
-
-        <ListView
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
-        android:padding="10dp"
-        android:layout_weight="0.3"
+        android:text="Origem:"
+        android:textColor="#0caf00"
+        />
+    <EditText
+        android:id="@+id/txtOrigem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#0caf00"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:enabled="false"
+        android:text="Universidade Tecnológica Federal do Paraná"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#0288d1"
+        android:text="Destino" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtDestino"
+        android:background="#0288d1"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:enabled="false"
+        android:text="Supermercado Carreira"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000000"
+            android:text="Horário de saída"
+            />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:layout_gravity="center"
+            android:padding="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#0288d1"
+                android:id="@+id/txtHorario"
 
-        android:id="@+id/listView" />
+                android:text="00:00h" />
+            </LinearLayout>
+    </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.4"
-            android:orientation="horizontal">
-    <Button
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:text="Vagas disponíveis" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:layout_gravity="center"
+
+                android:padding="5dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#0288d1"
+                    android:id="@+id/txtNumVagas"
+                    android:text="4" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Solicitar Carona"
-        android:textSize="16sp"
-        android:layout_weight="0.5"
-        android:id="@+id/button"
+        android:id="@+id/listaSapos"
         android:layout_gravity="center_horizontal" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Ver no Mapa"
-                android:textSize="16sp"
-                android:layout_weight="0.5"
-                android:id="@+id/button1"
-                android:layout_gravity="center_horizontal" />
-
-
-        </LinearLayout>
-    </LinearLayout>
 </LinearLayout>

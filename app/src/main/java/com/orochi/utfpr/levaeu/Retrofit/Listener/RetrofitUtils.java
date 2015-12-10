@@ -1,4 +1,4 @@
-package com.orochi.utfpr.levaeu.Listener;
+package com.orochi.utfpr.levaeu.Retrofit.Listener;
 
 import com.google.gson.GsonBuilder;
 
