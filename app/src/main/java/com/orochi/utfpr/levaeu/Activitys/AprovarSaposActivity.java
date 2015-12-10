@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.orochi.utfpr.levaeu.Activitys.AdaptersListView.AdapterAprovarSapoListView;
@@ -28,6 +29,7 @@ public class AprovarSaposActivity extends AppCompatActivity {
     private AdapterAprovarSapoListView adapter;
 
     @Bind(R.id.listaSaposPraAprovar)
+     TextView txt;
     ListView listaSaposPraAprovar;
 
     @Override
@@ -38,7 +40,7 @@ public class AprovarSaposActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         PessoaListener p = RetrofitUtils.getRetrofit().create(PessoaListener.class);
-
+        txt = (TextView) findViewById(R.id.txtsapo);
         Call<List<Carona>> p2 = p.getCaronasCriadas(Sessao.getInstance().getPessoaLogada().getCodPessoa());
         p2.enqueue(new Callback<List<Carona>>() {
             @Override
@@ -48,11 +50,11 @@ public class AprovarSaposActivity extends AppCompatActivity {
                     MergeAdapter mergeAdapter = new MergeAdapter();
                     for(Carona c : response.body()){
                         mergeAdapter.addAdapter(new AdapterAprovarSapoListView(AprovarSaposActivity.this, c));
-                    }
+
 
                         listaSaposPraAprovar.setAdapter(mergeAdapter);
 
-                } else {
+                } }else {
                     try {
                         Toast.makeText(AprovarSaposActivity.this, "Erro ao carregar sapos: " + response.errorBody().string(), Toast.LENGTH_SHORT).show();
                         finish();
