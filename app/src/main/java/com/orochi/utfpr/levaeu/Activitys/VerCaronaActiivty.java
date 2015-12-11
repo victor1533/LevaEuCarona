@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.orochi.utfpr.levaeu.Activitys.AdaptersListView.AdapterHistoricoListView;
 import com.orochi.utfpr.levaeu.Escopo.Carona;
 import com.orochi.utfpr.levaeu.Escopo.Pessoa;
 import com.orochi.utfpr.levaeu.R;
@@ -68,6 +69,8 @@ public class VerCaronaActiivty extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         carona = (Carona) getIntent().getSerializableExtra("carona");
+        AdapterHistoricoListView.caronasAvaliadas = null;
+
         if (Sessao.getInstance().getPessoaLogada().equals(carona.getMotorista())) {
             containerMotorista.setVisibility(View.GONE);
             lblMotorista.setVisibility(View.GONE);

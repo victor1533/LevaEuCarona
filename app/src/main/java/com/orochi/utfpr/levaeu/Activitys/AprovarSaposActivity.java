@@ -29,8 +29,9 @@ public class AprovarSaposActivity extends AppCompatActivity {
     private AdapterAprovarSapoListView adapter;
 
     @Bind(R.id.listaSaposPraAprovar)
-     TextView txt;
     ListView listaSaposPraAprovar;
+
+    TextView txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

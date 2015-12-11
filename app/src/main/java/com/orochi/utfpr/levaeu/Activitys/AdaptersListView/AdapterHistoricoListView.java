@@ -80,14 +80,13 @@ public class AdapterHistoricoListView extends BaseAdapter{
         }
         final Carona carona = itens.getCaronas().get(position);
         if(caronasAvaliadas == null) {
-
             RetrofitUtils.getRetrofit().create(PessoaListener.class)
                     .getCaronasAvaliadas(Sessao.getInstance().getPessoaLogada().getCodPessoa()).enqueue(new Callback<List<Carona>>() {
                 @Override
                 public void onResponse(Response<List<Carona>> response, Retrofit retrofit) {
-                    if (response != null) {
-                        caronasAvaliadas = response.body();
-                        if (caronasAvaliadas.contains(carona)) {
+                    if (response.body() != null) {
+                        caronasAvaliadas = response.body() ;
+                        if (response.body().contains(carona)) {
                             itemHolder.like.setVisibility(View.GONE);
                             itemHolder.dislike.setVisibility(View.GONE);
                         }
@@ -119,7 +118,7 @@ public class AdapterHistoricoListView extends BaseAdapter{
                 c2.enqueue(new Callback<RespostaWS>() {
                     @Override
                     public void onResponse(Response<RespostaWS> response, Retrofit retrofit) {
-                        if(response != null){
+                        if(response.body() != null){
                             if(response.body().isSucesso()){
                                 Toast.makeText(contexto, "Like com sucesso!", Toast.LENGTH_SHORT).show();
                                 itemHolder.like.setVisibility(View.GONE);
@@ -133,7 +132,7 @@ public class AdapterHistoricoListView extends BaseAdapter{
 
                     @Override
                     public void onFailure(Throwable t) {
-
+                        t.printStackTrace();
                     }
                 });
             }
@@ -142,14 +141,12 @@ public class AdapterHistoricoListView extends BaseAdapter{
         itemHolder.dislike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /* VAI DAR DISLIKE */
-
                 CaronaListener c = RetrofitUtils.getRetrofit().create(CaronaListener.class);
                 Call<RespostaWS> c2 = c.darDislike(Sessao.getInstance().getPessoaLogada().getCodPessoa(), carona.getCodCarona());
                 c2.enqueue(new Callback<RespostaWS>() {
                     @Override
                     public void onResponse(Response<RespostaWS> response, Retrofit retrofit) {
-                        if (response != null) {
+                        if (response.body() != null) {
                             if (response.body().isSucesso()) {
                                 Toast.makeText(contexto, "Dislike com sucesso!", Toast.LENGTH_SHORT).show();
                                 itemHolder.like.setVisibility(View.GONE);
@@ -162,7 +159,7 @@ public class AdapterHistoricoListView extends BaseAdapter{
 
                     @Override
                     public void onFailure(Throwable t) {
-
+                        t.printStackTrace();
                     }
                 });
 

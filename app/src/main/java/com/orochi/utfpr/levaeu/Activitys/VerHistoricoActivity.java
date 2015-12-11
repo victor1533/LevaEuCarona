@@ -1,8 +1,11 @@
 package com.orochi.utfpr.levaeu.Activitys;
 
+import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.orochi.utfpr.levaeu.Activitys.AdaptersListView.AdapterHistoricoListView;
@@ -31,6 +34,15 @@ public class VerHistoricoActivity extends AppCompatActivity {
 
         StrictMode.setThreadPolicy(policy);
         final ListView lista = (ListView) findViewById(R.id.listHistorico);
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(VerHistoricoActivity.this, VerCaronaActiivty.class);
+                intent.putExtra("carona", (Carona) parent.getItemAtPosition(position));
+                startActivity(intent);
+            }
+        });
+
         PessoaListener p = RetrofitUtils.getRetrofit().create(PessoaListener.class);
         Call<Historico> historicoCall = p.pegarHistorico(Sessao.getInstance().getPessoaLogada().getCodPessoa());
         historicoCall.enqueue(new Callback<Historico>() {

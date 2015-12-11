@@ -78,7 +78,6 @@ public class NewCaronaActivity extends AppCompatActivity {
                 Place place = PlacePicker.getPlace(data, this);
                 this.origemCampo.setText(place.getName() == null? place.getAddress(): place.getName());
               carona.setOrigem(Local.PlaceToLocal(place));
-                Toast.makeText(this, ""+place.getLatLng().latitude, Toast.LENGTH_SHORT).show();
             }
         }else if(requestCode == PLACE_PICKER_REQUEST_DESTINO){
             Place place = PlacePicker.getPlace(data, this);
@@ -88,7 +87,6 @@ public class NewCaronaActivity extends AppCompatActivity {
     }
     @OnClick(R.id.criaCarona)
     public void criaCarona() {
-        // Toast.makeText(getApplicationContext(), "Carona TESTE!", Toast.LENGTH_LONG).show();
 
         carona.setDataHoraPartida(Datas.ddMMyyyyHHmmToDate(dataHoraPartidaCampo.getText().toString()));
         carona.setNumVagas(numVagasCampo.getValue());

@@ -26,18 +26,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
+
             android:name=".Activitys.SplashActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activitys.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
         </activity>
         <activity
             android:name=".Activitys.LoginActivity"
-            android:label="@string/title_activity_login" >
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,6 +49,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activitys.NewCaronaActivity"
             android:label="@string/title_activity_new_carona"
             android:theme="@style/AppTheme.NoActionBar" >
@@ -62,27 +67,34 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activitys.MapaActivity"
             android:label="@string/title_activity_mapa" >
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activitys.AprovarSaposActivity"
             android:label="@string/title_activity_aprovar_sapos"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activitys.VerCaronaActiivty"
             android:label="@string/title_activity_ver_carona_actiivty"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activitys.VerCaronasQueEstouActivity"
             android:label="@string/title_activity_ver_caronas_que_estou"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity android:name=".Activitys.VerHistoricoActivity" >
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".Activitys.VerHistoricoActivity" >
         </activity>
         <activity
+            android:screenOrientation="portrait"
             android:name=".Activitys.VerPerfilActivity"
             android:label="@string/title_activity_ver_perfil"
             android:theme="@style/AppTheme.NoActionBar" >
